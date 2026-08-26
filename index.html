@@ -276,12 +276,12 @@ body{
     </div>
 
     <div class="switch">
-      <span class="lbl">② USJ 티켓 — 2일차 저녁이 여기서 갈립니다</span>
+      <span class="lbl">② USJ 티켓 — 익스프레스 4가 기본안, 2일차 저녁이 여기서 갈립니다</span>
       <div class="opts three">
         <button class="opt" id="btnU1" aria-pressed="true" onclick="pickU('1')">
-          <div class="air">조이패스형 <span class="tag">옵션 1</span></div>
-          <div class="times">입장권 + 닌텐도 확약권<br>+ 간사이 조이패스</div>
-          <div class="fare">144,500<span>원 / 인</span></div>
+          <div class="air">익스프레스 4 <span class="tag">옵션 1 · 기본안</span></div>
+          <div class="times">입장권 94,900<br>+ 레이스&amp;죠스4</div>
+          <div class="fare">222,184<span>원 / 인</span></div>
         </button>
         <button class="opt" id="btnU2" aria-pressed="false" onclick="pickU('2')">
           <div class="air">익스프레스 5 <span class="tag">옵션 2</span></div>
@@ -289,9 +289,9 @@ body{
           <div class="fare">326,251<span>원 / 인</span></div>
         </button>
         <button class="opt" id="btnU3" aria-pressed="false" onclick="pickU('3')">
-          <div class="air">익스프레스 4 <span class="tag">옵션 3</span></div>
-          <div class="times">입장권 94,900<br>+ 레이스&amp;죠스4</div>
-          <div class="fare">222,184<span>원 / 인</span></div>
+          <div class="air">조이패스형 <span class="tag">옵션 3</span></div>
+          <div class="times">입장권 + 닌텐도 확약권<br>+ 간사이 조이패스</div>
+          <div class="fare">144,500<span>원 / 인</span></div>
         </button>
       </div>
     </div>
@@ -728,7 +728,7 @@ var F = {
 };
 
 var U = {
-  '1': { price:144500, onsen:true, exp:"없음",
+  '3': { price:144500, onsen:true, exp:"없음",
     pre:"입장권 + 닌텐도 확약권 + 간사이 조이패스",
     title:"USJ 올인, 그리고 온천",
     banner:"<b>익스프레스 패스가 없는 구성입니다.</b> 슈퍼 닌텐도 월드 <b>에리어 입장</b>은 확약되지만, 마리오카트·해리포터 등 개별 어트랙션은 일반 대기줄에 서야 합니다. 금요일이라도 인기 어트랙션은 60~120분을 각오하세요. 대신 간사이 조이패스로 <b>소라니와 온천이 무료</b>입니다.",
@@ -742,7 +742,7 @@ var U = {
     rides:[["마리오카트 : 쿠파의 도전","탑승 시간 사전 지정 필수"],["해리 포터 앤드 더 포비든 저니",""],["미니언 메이헴 미션 ~대악당이 되는 길~",""],["미니언 메이헴",""],["쥬라기공원 더 라이드",""]],
     entryH:"마리오카트 지정 시간 확인", entryD:"사전에 지정한 탑승 시간에 맞춰 하루 동선을 짭니다",
     parkD:"익스프레스 5개 소화 + 나머지는 일반 대기줄 · 파크 내 낮맥주는 필수 코스" },
-  '3': { price:222184, onsen:false, exp:"4개",
+  '1': { price:222184, onsen:false, exp:"4개",
     pre:"입장권 94,900 + 레이스&죠스4 144,484",
     title:"USJ 올인 — 익스프레스 4",
     banner:"<b>인기 어트랙션 4개를 우선탑승</b>하고 슈퍼 닌텐도 월드 <b>에리어 입장도 포함</b>됩니다. 옵션 2에서 미니언 메이헴 미션 하나가 빠지는 대신 <b>10만원가량 저렴</b>합니다. 조이패스가 빠지므로 소라니와 대신 <b>다이헤이노유 난바 온천</b>으로 갑니다.",
@@ -849,7 +849,7 @@ function render(){
   set('d2Title', u.title);
   html('usjBanner', u.banner);
   set('entryH', u.entryH); set('entryD', u.entryD); set('parkD', u.parkD);
-  document.getElementById('entryRow').className = 'row' + (curU === '1' ? '' : ' warn');
+  document.getElementById('entryRow').className = 'row' + (curU === '3' ? '' : ' warn');
   document.getElementById('wakeRow').className = 'row' + (curL === 'A' ? ' warn' : '');
 
   var rp = document.getElementById('ridePanel');
