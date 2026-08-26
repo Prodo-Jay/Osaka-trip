@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오사카 2박 3일 · 일정 &amp; 비용</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@300;400;600;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0F1319; --panel:#171D27; --panel2:#1E2733; --line:#2B3644;
+  --beer:#E9A63C; --neon:#F0565F; --jade:#57B6A8;
+  --paper:#ECE4D6; --mute:#8792A3;
+}
+body{
+  background:var(--ink); color:var(--paper);
+  font-family:'Gothic A1',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-weight:400; line-height:1.6; padding:0 0 60px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;padding:52px 0 38px;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;inset:0 0 auto;height:8px;
+  background:repeating-linear-gradient(90deg,var(--neon) 0 44px,var(--beer) 44px 88px,var(--jade) 88px 132px);
+  opacity:.85;
+}
+.kicker{
+  font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.28em;
+  color:var(--beer);text-transform:uppercase;margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Black Han Sans',sans-serif;font-weight:400;
+  font-size:clamp(38px,7vw,72px);line-height:.98;letter-spacing:-.01em;
+}
+.hero h1 em{font-style:normal;color:var(--beer)}
+.hero .sub{margin-top:16px;color:var(--mute);font-size:15px}
+.hero .sub b{color:var(--paper);font-weight:600}
+
+.switch{
+  margin:22px 0 0;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:20px;
+}
+.switch>.lbl{
+  font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.2em;
+  color:var(--mute);text-transform:uppercase;margin-bottom:14px;display:block;
+}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opts.three{grid-template-columns:repeat(3,1fr)}
+.opt{
+  background:var(--panel2);border:1.5px solid var(--line);border-radius:11px;
+  padding:15px 16px;cursor:pointer;text-align:left;color:inherit;font:inherit;
+  transition:border-color .2s,background .2s,transform .12s;
+}
+.opt:hover{border-color:#3E4A5C;transform:translateY(-1px)}
+.opt:focus-visible{outline:2px solid var(--beer);outline-offset:2px}
+.opt[aria-pressed="true"]{border-color:var(--beer);background:#231D14}
+.opt .air{font-weight:800;font-size:16px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.opt .tag{
+  font-family:'Roboto Mono',monospace;font-size:10px;padding:2px 7px;border-radius:99px;
+  background:var(--line);color:var(--mute);letter-spacing:.06em;
+}
+.opt[aria-pressed="true"] .tag{background:var(--beer);color:#14181F}
+.opt .times{margin-top:8px;font-family:'Roboto Mono',monospace;font-size:12px;color:var(--mute);line-height:1.75}
+.opt .fare{margin-top:9px;font-family:'Roboto Mono',monospace;font-size:19px;font-weight:700;color:var(--paper)}
+.opt .fare span{font-size:11.5px;color:var(--mute);font-weight:400}
+
+.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.stat .k{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
+.stat .v{font-family:'Roboto Mono',monospace;font-size:clamp(18px,3.2vw,25px);font-weight:700;margin-top:7px}
+.stat.total .v{color:var(--beer)}
+.stat .n{font-size:11.5px;color:var(--mute);margin-top:3px}
+
+.sec{margin-top:56px}
+.sec>h2{
+  font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:26px;
+  display:flex;align-items:center;gap:12px;margin-bottom:6px;
+}
+.sec>h2:after{content:"";flex:1;height:1px;background:var(--line)}
+.sec>.note{color:var(--mute);font-size:13.5px;margin-bottom:26px}
+
+.day{background:var(--panel);border:1px solid var(--line);border-radius:16px;margin-bottom:16px;overflow:hidden}
+.dayhead{padding:20px 22px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.dayno{font-family:'Black Han Sans',sans-serif;font-size:30px;line-height:1;color:var(--beer)}
+.daydate{font-family:'Roboto Mono',monospace;font-size:13px;color:var(--mute);letter-spacing:.04em}
+.daytitle{font-weight:800;font-size:17px;flex:1;min-width:180px}
+
+.tl{padding:8px 22px 22px}
+.row{display:grid;grid-template-columns:104px 1fr;position:relative}
+.row .t{
+  font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--mute);
+  padding:16px 16px 0 0;text-align:right;white-space:nowrap;
+}
+.row .c{padding:15px 0 15px 22px;border-left:1.5px solid var(--line);position:relative}
+.row:last-child .c{border-left-color:transparent}
+.row .c:before{
+  content:"";position:absolute;left:-5.5px;top:21px;width:9px;height:9px;
+  border-radius:50%;background:var(--line);border:2px solid var(--panel);
+}
+.row.key .c:before{background:var(--beer);box-shadow:0 0 0 3px rgba(233,166,60,.18)}
+.row.warn .c:before{background:var(--neon);box-shadow:0 0 0 3px rgba(240,86,95,.18)}
+.row .h{font-weight:600;font-size:15px}
+.row.key .h{color:var(--beer)}
+.row .d{font-size:13px;color:var(--mute);margin-top:3px}
+.chip{
+  display:inline-block;font-family:'Roboto Mono',monospace;font-size:10px;
+  padding:2px 7px;border-radius:4px;margin-left:7px;vertical-align:1.5px;
+  background:var(--line);color:var(--mute);letter-spacing:.05em;
+}
+.chip.free{background:rgba(87,182,168,.16);color:var(--jade)}
+.chip.no{background:rgba(240,86,95,.16);color:var(--neon)}
+
+.branch{display:none}
+.branch.on{display:block}
+.banner{margin:4px 22px 18px;padding:13px 16px;border-radius:10px;font-size:13px;border:1px solid;line-height:1.55}
+.banner.flush{margin:16px 0 0}
+.banner.good{background:rgba(87,182,168,.08);border-color:rgba(87,182,168,.32);color:#B9E3DC}
+.banner.bad{background:rgba(240,86,95,.08);border-color:rgba(240,86,95,.32);color:#F5BCBF}
+.banner.warn{background:rgba(233,166,60,.08);border-color:rgba(233,166,60,.34);color:#F0D3A0}
+.banner b{font-weight:800}
+.banner ul{margin:8px 0 0 18px}
+.banner li{margin:6px 0}
+.banner .close{display:block;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.12)}
+
+.rides{margin:0 22px 20px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.rides .rh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.rides .rt{font-weight:800;font-size:14.5px}
+.rides .rc{font-family:'Roboto Mono',monospace;font-size:10.5px;color:var(--mute);letter-spacing:.1em}
+.rides ol{list-style:none;counter-reset:r}
+.rides li{
+  counter-increment:r;padding:8px 0 8px 34px;position:relative;font-size:13.5px;
+  border-bottom:1px dashed rgba(255,255,255,.06);
+}
+.rides li:last-child{border-bottom:none}
+.rides li:before{
+  content:counter(r,decimal-leading-zero);position:absolute;left:0;top:8px;
+  font-family:'Roboto Mono',monospace;font-size:11px;color:var(--beer);font-weight:700;
+}
+.rides li em{font-style:normal;display:block;font-size:11.5px;color:var(--neon);margin-top:2px}
+
+.stayx{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.sx{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:19px 20px}
+.sx.pick{border-color:var(--beer);background:linear-gradient(180deg,#241E15,var(--panel2) 55%)}
+.sx .sxh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sx .sxn{font-weight:800;font-size:16px}
+.sx .sxp{font-family:'Roboto Mono',monospace;font-size:15px;color:var(--beer);font-weight:700}
+.sx .sxm{font-family:'Roboto Mono',monospace;font-size:11px;color:var(--mute);margin-top:4px;letter-spacing:.03em}
+.sx ul{list-style:none;margin-top:13px}
+.sx li{padding:6px 0 6px 20px;position:relative;font-size:13px;color:#CFC8BB;line-height:1.5}
+.sx li:before{position:absolute;left:0;top:6px;font-size:11px}
+.sx li.p:before{content:"＋";color:var(--jade)}
+.sx li.m:before{content:"−";color:var(--neon)}
+.sx li.q:before{content:"?";color:var(--beer);font-weight:700}
+.verdict{
+  margin-top:14px;padding:14px 16px;border-radius:10px;font-size:13px;line-height:1.6;
+  background:rgba(87,182,168,.07);border:1px solid rgba(87,182,168,.28);color:#C4E6E0;
+}
+.verdict b{font-weight:800;color:#E4F4F1}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:19px 20px;display:flex;flex-direction:column}
+.card.pre{border-color:#3A3020;background:linear-gradient(180deg,#1D1811,var(--panel) 60%)}
+.card .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.card .cn{font-weight:800;font-size:15.5px}
+.card .cd{font-family:'Roboto Mono',monospace;font-size:10.5px;color:var(--mute);letter-spacing:.08em}
+.card ul{list-style:none;margin:14px 0 0;flex:1}
+.card li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.06);font-size:13.5px}
+.card li:last-child{border-bottom:none}
+.card li .lb{color:#CFC8BB}
+.card li .lb small{display:block;color:var(--mute);font-size:11px;margin-top:1px}
+.card li .vl{font-family:'Roboto Mono',monospace;font-size:13px;white-space:nowrap;color:var(--paper)}
+.card li .vl.zero{color:var(--jade)}
+.card li .vl.na{color:var(--mute)}
+.card .sum{margin-top:14px;padding-top:13px;border-top:1.5px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.card .sum .sl{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--mute)}
+.card .sum .sv{font-family:'Roboto Mono',monospace;font-size:19px;font-weight:700;color:var(--beer)}
+
+.grand{
+  margin-top:16px;background:linear-gradient(100deg,#231D14,#171D27 70%);
+  border:1.5px solid var(--beer);border-radius:14px;padding:22px 24px;
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.grand .gl{font-family:'Black Han Sans',sans-serif;font-size:19px}
+.grand .gl small{display:block;font-family:'Gothic A1';font-weight:400;font-size:12.5px;color:var(--mute);margin-top:5px;letter-spacing:0}
+.grand .gv{font-family:'Roboto Mono',monospace;font-size:clamp(26px,5vw,38px);font-weight:700;color:var(--beer)}
+
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.act{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--jade);border-radius:0 11px 11px 0;padding:15px 18px}
+.act.hot{border-left-color:var(--neon)}
+.act.ask{border-left-color:var(--beer)}
+.act .an{font-weight:700;font-size:14.5px}
+.act .ad{font-size:12.5px;color:var(--mute);margin-top:5px;line-height:1.55}
+.act .ad b{color:var(--paper)}
+
+.fine{margin-top:30px;font-size:11.5px;color:var(--mute);line-height:1.75;border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:760px){ .opts.three{grid-template-columns:1fr} .stayx{grid-template-columns:1fr} }
+
+@media (max-width:660px){
+  .opts{grid-template-columns:1fr}
+  .dash{grid-template-columns:1fr}
+  .tl{padding:8px 20px 20px}
+  .row{
+    display:block;padding-left:20px;position:relative;
+    border-left:1.5px solid var(--line);
+  }
+  .row:last-child{border-left-color:transparent}
+  .row:before{
+    content:"";position:absolute;left:-5.5px;top:19px;width:9px;height:9px;
+    border-radius:50%;background:var(--line);border:2px solid var(--panel);
+  }
+  .row.key:before{background:var(--beer);box-shadow:0 0 0 3px rgba(233,166,60,.18)}
+  .row.warn:before{background:var(--neon);box-shadow:0 0 0 3px rgba(240,86,95,.18)}
+  .row .t{
+    text-align:left;padding:14px 0 0;font-size:11px;
+    color:var(--beer);letter-spacing:.06em;white-space:normal;
+  }
+  .row .c{padding:2px 0 14px;border-left:none}
+  .row .c:before{display:none}
+  .banner,.rides{margin-left:20px;margin-right:20px}
+  .banner.flush{margin-left:0;margin-right:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">Osaka · 2026.11.05 – 11.07</span>
+    <h1>나마비루<br>세 잔의 <em>3일</em></h1>
+    <p class="sub">고등학교 친구 <b>4인</b> · 2박 3일 · <b>USJ</b> · <b>덴덴타운</b> · 매 끼니 일식과 생맥주</p>
+
+    <div class="switch">
+      <span class="lbl">① 항공편 — 3일차 오후가 여기서 갈립니다</span>
+      <div class="opts">
+        <button class="opt" id="btnA" aria-pressed="true" onclick="pickF('A')">
+          <div class="air">대한항공 <span class="tag">옵션 1</span></div>
+          <div class="times">11/05 &nbsp;07:55 → 09:40 · KE5721<br>11/07 &nbsp;20:20 → 22:25 · KE5724</div>
+          <div class="fare">531,100<span>원 / 인</span></div>
+        </button>
+        <button class="opt" id="btnB" aria-pressed="false" onclick="pickF('B')">
+          <div class="air">파라타항공 <span class="tag">옵션 2</span></div>
+          <div class="times">11/05 &nbsp;08:55 → 10:45<br>11/07 &nbsp;17:35 → 19:35</div>
+          <div class="fare">476,000<span>원 / 인</span></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="switch">
+      <span class="lbl">② USJ 티켓 — 2일차 저녁이 여기서 갈립니다</span>
+      <div class="opts three">
+        <button class="opt" id="btnU1" aria-pressed="true" onclick="pickU('1')">
+          <div class="air">조이패스형 <span class="tag">옵션 1</span></div>
+          <div class="times">입장권 + 닌텐도 확약권<br>+ 간사이 조이패스</div>
+          <div class="fare">144,500<span>원 / 인</span></div>
+        </button>
+        <button class="opt" id="btnU2" aria-pressed="false" onclick="pickU('2')">
+          <div class="air">익스프레스 5 <span class="tag">옵션 2</span></div>
+          <div class="times">입장권 94,900<br>+ 레이스&amp;미니언 스페셜5</div>
+          <div class="fare">326,251<span>원 / 인</span></div>
+        </button>
+        <button class="opt" id="btnU3" aria-pressed="false" onclick="pickU('3')">
+          <div class="air">익스프레스 4 <span class="tag">옵션 3</span></div>
+          <div class="times">입장권 94,900<br>+ 레이스&amp;죠스4</div>
+          <div class="fare">222,184<span>원 / 인</span></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="switch">
+      <span class="lbl">③ 숙소 — 아침 준비와 짐 배송이 여기서 갈립니다</span>
+      <div class="opts">
+        <button class="opt" id="btnLH" aria-pressed="true" onclick="pickL('H')">
+          <div class="air">카락사 호텔 <span class="tag">커넥팅룸 ×2</span></div>
+          <div class="times">니시신사이바시 · ★4.4 (1,180)<br>총 463,765원</div>
+          <div class="fare">115,941<span>원 / 인</span></div>
+        </button>
+        <button class="opt" id="btnLA" aria-pressed="false" onclick="pickL('A')">
+          <div class="air">에어비앤비 <span class="tag">집 전체</span></div>
+          <div class="times">난바 · 도톤보리 도보 3분 · ★4.75 (40)<br>총 376,900원</div>
+          <div class="fare">94,225<span>원 / 인</span></div>
+        </button>
+      </div>
+
+      <div class="stayx" style="margin-top:14px">
+        <div class="sx" id="sxH">
+          <div class="sxh"><span class="sxn">카락사 호텔 오사카 난바</span><span class="sxp">+21,716원</span></div>
+          <div class="sxm">커넥팅룸 2개 · 니시신사이바시 · 도톤보리 도보 5분</div>
+          <ul>
+            <li class="p"><b>욕실 2개</b> — 2일차 아침 8시 출발이 수월합니다</li>
+            <li class="p"><b>프런트 짐 발송</b> — 3일차 아침에 맡기기만 하면 끝</li>
+            <li class="p">커넥팅룸이라 내부 문으로 오가며 넷이 모일 수 있음</li>
+            <li class="p">로비 음료·스낵 24시간 무료 · 세탁실 · 매일 청소 · 수건 매일 교체</li>
+            <li class="p">도톤보리 도보권 → 밤에 걸어서 귀가</li>
+            <li class="p">후기 1,180개로 검증된 곳 · 커넥팅룸 사전 보장 사례 있음</li>
+            <li class="m">객실과 욕실이 좁은 편 (3성급 수준)</li>
+            <li class="m">방이 갈려 있어 '넷이 한 공간' 느낌은 덜함</li>
+            <li class="m">1인당 21,716원 더 비쌈</li>
+          </ul>
+        </div>
+        <div class="sx" id="sxA">
+          <div class="sxh"><span class="sxn">에어비앤비 · 난바</span><span class="sxp">−21,716원</span></div>
+          <div class="sxm">침실 3 · 침대 5 · 욕실 1 · 주방/거실 · 셀프 체크인</div>
+          <ul>
+            <li class="p"><b>위치가 가장 좋습니다</b> — 지도 기준 도톤보리 3분, 난바역 5분, 우라난바 바로 옆</li>
+            <li class="p">넷이 한 공간 · 거실에서 새벽까지 편하게 마실 수 있음</li>
+            <li class="p">주방·세탁기 완비 · 평점 4.75 (가격 대비 만족도 4.8)</li>
+            <li class="p">1인당 21,716원 저렴</li>
+            <li class="m"><b>욕실·화장실이 1개</b> — 2일차 아침 넷이 8시에 나가기 빠듯</li>
+            <li class="m">프런트가 없어 <b>호텔 짐 발송 불가</b> (난바역 카운터가 도보 5분이라 대안은 쉬움)</li>
+            <li class="m">셀프 체크인 · 매일 청소·수건 교체 없음 · 조미료 없음</li>
+            <li class="q">아래 두 가지를 <b>예약 전에 확인</b>해야 합니다</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="banner warn flush">
+        <b>에어비앤비 — 예약 전 호스트에게 물어볼 두 가지</b>
+        <ul>
+          <li><b>① 지도와 설명글의 위치가 다릅니다.</b> 지도 핀은 에비스바시 다리와 난바역 사이, 미도스지 동쪽 블록에 찍혀 있어 <b>도톤보리 도보 3분</b> 거리입니다. 그런데 리스팅 설명글에는 "쓰루하시역 도보 5분 · 난바 지하철 6분 · USJ 28분"으로 적혀 있습니다. 두 곳은 3km 넘게 떨어져 있어 <b>어느 쪽이냐에 따라 매일 밤 귀갓길이 완전히 달라집니다.</b></li>
+          <li><b>② 설명글이 다른 매물 것일 가능성이 있습니다.</b> 후기 138개에 공동 호스트까지 둔 다주택 운영자라 문구를 재사용했을 수 있습니다. 그렇다면 침실 구성(더블1·싱글2·이불2), 2층 좁은 계단, 화재·일산화탄소 경보기 없음 같은 정보도 <b>이 집 얘기가 아닐 수 있습니다.</b> 특히 경보기 여부는 넷이 자는 집이라 그냥 넘기기 어렵습니다.</li>
+        </ul>
+        <span class="close">호스트 응답률 100%, 1시간 내 응답입니다. <b>정확한 위치와 침실·욕실 구성, 경보기 유무</b> 세 가지만 메시지로 물어보면 판단이 끝납니다.</span>
+      </div>
+
+      <div class="verdict">
+        <b>판단 포인트 —</b> 위치가 지도대로라면 에어비앤비가 더 싸고 더 중심입니다. 그러면 호텔이 값을 하는 지점은 <b>욕실 2개</b>와 <b>프런트 짐 발송</b> 딱 둘로 좁혀집니다.
+        2일차에 넷이 아침 8시에 나가야 USJ 개장에 맞출 수 있는데, 이 일정의 성패가 거기 달려 있다고 보면 2만원은 싼 값입니다.
+        반대로 <b>"넷이 거실에 모여 새벽까지 마시는 것"</b> 자체가 이번 여행의 목적이라면 에어비앤비가 답입니다.
+      </div>
+    </div>
+
+    <div class="dash">
+      <div class="stat"><div class="k">3일차 자유시간</div><div class="v" id="sFree">–</div><div class="n">쿠시카츠 이후 남는 시간</div></div>
+      <div class="stat"><div class="k">USJ 우선탑승</div><div class="v" id="sExp">–</div><div class="n">익스프레스 대상 어트랙션</div></div>
+      <div class="stat total"><div class="k">1인 총예산</div><div class="v" id="sTotal">–</div><div class="n">개인 쇼핑 제외</div></div>
+    </div>
+  </header>
+
+  <section class="sec">
+    <h2>일정</h2>
+    <p class="note">시간은 여유를 둔 기준입니다. 주황색 표시는 놓치면 뒤가 무너지는 지점입니다.</p>
+
+    <div class="day">
+      <div class="dayhead">
+        <span class="dayno">1</span><span class="daydate">11.05 THU</span>
+        <span class="daytitle">도착, 스시로 첫 건배</span>
+      </div>
+      <div class="tl">
+        <div class="row"><div class="t">05:55</div><div class="c"><div class="h">인천공항 집결</div><div class="d">출발 2시간 전 · Visit Japan Web 등록 완료 확인 — 입국심사 시간이 크게 줄어듭니다</div></div></div>
+        <div class="row"><div class="t">07:55 – 09:40</div><div class="c"><div class="h">인천 → 간사이 · KE5721</div></div></div>
+        <div class="row"><div class="t">09:40 – 10:40</div><div class="c"><div class="h">입국심사 · 수하물 수취</div></div></div>
+        <div class="row"><div class="t">10:40 – 11:35</div><div class="c"><div class="h">난카이선으로 난바 이동</div><div class="d">공항급행 ¥970 · 라피트 ¥1,490 (7분 차이)</div></div></div>
+        <div class="row"><div class="t">11:40 – 13:00</div><div class="c"><div class="h">점심 — 라멘 + 첫 나마비루<span class="chip">가볍게</span></div><div class="d">저녁이 메인이라 여기서 배를 채우지 않습니다</div></div></div>
+        <div class="row"><div class="t">13:00 – 13:30</div><div class="c"><div class="h" id="lodgeH">–</div><div class="d" id="lodgeD">–</div></div></div>
+        <div class="row"><div class="t">13:30 – 18:00</div><div class="c"><div class="h">신사이바시 · 아메리카무라 · 도톤보리</div><div class="d">이른 출발 덕에 오후가 넉넉해졌습니다. 첫날은 무리하지 않고 거리 구경 위주로</div></div></div>
+        <div class="row key"><div class="t">18:00 – 20:30</div><div class="c"><div class="h">저녁 — 스시 키요하라 + 나마비루</div><div class="d">★4.6 (331) · 난바 센니치마에의 가성비 로컬 스시 · 수요일 휴무인데 우리는 목요일이라 문제없음 · 자리에 앉으면 오토시(유료 기본 안주)가 나오는 집 · 예약 권장</div></div></div>
+        <div class="row"><div class="t">20:30 – 20:45</div><div class="c"><div class="h">난바 → 도부츠엔마에</div><div class="d">미도스지선 4분. 신세카이·토비타신치가 모두 이 역에서 도보권입니다</div></div></div>
+        <div class="row warn"><div class="t">20:45 – 21:30</div><div class="c"><div class="h">신세카이 야경 · 토비타신치<span class="chip no">촬영 금지</span></div><div class="d">츠텐카쿠 조명을 보고 토비타신치 메인스트리트를 지나갑니다. 관광지가 아니므로 아래 주의사항을 반드시 읽어주세요</div></div></div>
+        <div class="row"><div class="t">21:30 – 21:45</div><div class="c"><div class="h">난바 복귀</div></div></div>
+        <div class="row"><div class="t">21:45 –</div><div class="c"><div class="h">2차 — 우라난바 이자카야 골목</div><div class="d" id="night1D">–</div></div></div>
+      </div>
+      <div class="banner bad">
+        <b>토비타신치 — 가기 전에 반드시 공유할 것</b>
+        이곳은 관광지가 아니라 성매매가 이루어지는 지역입니다. 구경 자체를 막지는 않지만, 지키지 않으면 실제로 마찰이 생깁니다.
+        <ul>
+          <li><b>사진·영상 촬영 절대 금지.</b> 골목마다 관리인이 서 있고, 휴대폰을 드는 순간 제지당합니다. 실랑이 사례가 많습니다</li>
+          <li>메인스트리트만 걷고 골목 안쪽으로 들어가지 않기. <b>20~30분이면 충분</b>합니다</li>
+          <li>종사자를 빤히 쳐다보거나 손가락질하지 않기. 조용히 지나갑니다</li>
+          <li>많이 취한 상태로 가지 않기. 저녁 자리 <b>직후, 2차 전에</b> 배치한 이유입니다</li>
+          <li>인근 니시나리·아이린 지구는 밤에 주취자가 많습니다. 소지품에 유의하세요</li>
+          <li><b>가고 싶지 않은 사람이 있으면 신세카이에서 따로 기다리는 것도 방법</b>입니다</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dayhead">
+        <span class="dayno">2</span><span class="daydate">11.06 FRI</span>
+        <span class="daytitle" id="d2Title">USJ 올인</span>
+      </div>
+      <div class="banner good">
+        <b>금요일로 옮긴 게 이번 일정의 최대 이득입니다.</b> 주말 대비 대기줄이 눈에 띄게 짧습니다.
+      </div>
+      <div class="banner warn" id="usjBanner">–</div>
+
+      <div class="rides" id="ridePanel">
+        <div class="rh"><span class="rt" id="rideTitle">–</span><span class="rc" id="rideCount">–</span></div>
+        <ol id="rideList"></ol>
+      </div>
+
+      <div class="tl">
+        <div class="row" id="wakeRow"><div class="t">07:00</div><div class="c"><div class="h">기상 · 조식</div><div class="d" id="wakeD">–</div></div></div>
+        <div class="row"><div class="t">08:00 – 08:40</div><div class="c"><div class="h">숙소 → 유니버설시티</div><div class="d" id="usjMoveD">–</div></div></div>
+        <div class="row key"><div class="t">08:40</div><div class="c"><div class="h">게이트 도착 — 개장 30분 전</div><div class="d">11/6 운영시간 공지를 확인하고 이 시각을 역산해야 합니다</div></div></div>
+        <div class="row" id="entryRow"><div class="t">입장 직후</div><div class="c"><div class="h" id="entryH">–</div><div class="d" id="entryD">–</div></div></div>
+        <div class="row"><div class="t">09:00 – 18:00</div><div class="c"><div class="h">유니버설 스튜디오 재팬</div><div class="d" id="parkD">–</div></div></div>
+      </div>
+
+      <div class="branch on" id="d2Onsen">
+        <div class="tl" style="padding-top:0">
+          <div class="row"><div class="t">18:00 – 18:25</div><div class="c"><div class="h">소라니와 온천으로 이동</div><div class="d">벤텐초 · 오사카베이타워. USJ에서 지하철로 20분 남짓</div></div></div>
+          <div class="row key"><div class="t">18:30 – 20:30</div><div class="c"><div class="h">소라니와 온천<span class="chip free">조이패스 무료</span></div><div class="d">유카타 대여 포함 · 23:00까지 영업 · 하루 종일 걸은 다리를 여기서 풉니다</div></div></div>
+          <div class="row"><div class="t">21:00 – 23:00</div><div class="c"><div class="h">난바 복귀 → 이자카야 + 나마비루</div><div class="d">온천 내 식당도 있지만 음식 평은 평범해서 난바에서 먹는 쪽을 권합니다</div></div></div>
+          <div class="row warn"><div class="t">숙소 복귀 후</div><div class="c"><div class="h" id="bookA">–</div><div class="d" id="bookAD">–</div></div></div>
+        </div>
+      </div>
+
+      <div class="branch" id="d2NoOnsen">
+        <div class="tl" style="padding-top:0">
+          <div class="row"><div class="t">18:00 – 18:35</div><div class="c"><div class="h">USJ → 다이헤이노유 난바</div><div class="d">유니버설시티 → 니시쿠조 환승 → 사쿠라가와역, 약 30분 · 역에서 도보 5분. 조이패스가 없으니 소라니와 대신 숙소 쪽 온천으로 바로 갑니다</div></div></div>
+          <div class="row key"><div class="t">18:40 – 20:10</div><div class="c"><div class="h">다이헤이노유 난바 — 온천으로 피로 풀기</div><div class="d">난바 서쪽의 천연온천 · 입욕료 ¥850 안팎 · 새벽 1시까지 영업. USJ에서 하루 종일 걸은 다리를 저녁 전에 먼저 풉니다. 일본 대중탕이라 타투는 입장 불가</div></div></div>
+          <div class="row key"><div class="t">20:30 – 23:00</div><div class="c"><div class="h">저녁 — 숙소 근처 이자카야 + 나마비루</div><div class="d">몸을 풀고 나서 느긋하게. 숙소가 도보권이라 시간을 신경 쓸 필요가 없습니다</div></div></div>
+          <div class="row"><div class="t">23:00 –</div><div class="c"><div class="h">도톤보리 심야 산책 · 2차 (자유)</div></div></div>
+          <div class="row warn"><div class="t">숙소 복귀 후</div><div class="c"><div class="h" id="bookB">–</div><div class="d" id="bookBD">–</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dayhead">
+        <span class="dayno">3</span><span class="daydate">11.07 SAT</span>
+        <span class="daytitle">짐 없이, 북에서 남으로</span>
+      </div>
+      <div class="banner good">
+        <b>구로몬(북) → 덴덴타운(중) → 신세카이(남)</b> 세 곳이 남북 일직선입니다. 아침을 구로몬에서 해결하고 쭉 내려가면 되돌아오는 구간이 없고, 덴덴타운에 2시간을 온전히 쓸 수 있습니다.
+      </div>
+      <div class="tl">
+        <div class="row"><div class="t">08:00</div><div class="c"><div class="h">기상 · 짐 정리</div></div></div>
+        <div class="row warn"><div class="t" id="bagT">08:30</div><div class="c"><div class="h" id="bagH">–</div><div class="d" id="bagD">–</div></div></div>
+        <div class="row"><div class="t">09:30 – 10:45</div><div class="c"><div class="h">구로몬 시장 — 아침 겸 해산물 + 맥주</div><div class="d">09:00~18:00 영업 · 인기 품목은 오전에 소진됩니다</div></div></div>
+        <div class="row key"><div class="t">11:00 – 13:00</div><div class="c"><div class="h">덴덴타운 굿즈샵 투어</div><div class="d">가게 대부분 10~12시 오픈 · 관심 없는 인원은 오락실·돈키호테에서 자유시간</div></div></div>
+        <div class="row"><div class="t">13:00 – 13:20</div><div class="c"><div class="h">신세카이 이동</div><div class="d">도보 15분 또는 사카이스지선 두 정거장</div></div></div>
+        <div class="row" id="kushiRow"><div class="t">13:20 – 14:20</div><div class="c"><div class="h">점심 — 잔잔요코초 쿠시카츠 + 낮술</div><div class="d" id="kushiD">–</div></div></div>
+      </div>
+
+      <div class="branch on" id="d3A">
+        <div class="tl" style="padding-top:0">
+          <div class="row key"><div class="t">14:20 – 17:20</div><div class="c"><div class="h">오후 자유시간 — 3시간<span class="chip">이동 포함</span></div><div class="d">돈키호테 쇼핑 / 우라난바 2차 / 스파월드 / 아메리카무라 — 아직 미정. 뭘 하느냐에 따라 이동 시간이 달라지므로 통으로 잡아둡니다</div></div></div>
+          <div class="row"><div class="t">17:20 – 18:20</div><div class="c"><div class="h">난바역 → 간사이공항</div></div></div>
+          <div class="row"><div class="t">18:20 – 20:20</div><div class="c"><div class="h">짐 수령 · 출국 수속 · 면세점 마지막 나마비루</div><div class="d">짐이 오후 4시에 도착해 있으므로 여유롭습니다</div></div></div>
+          <div class="row key"><div class="t">20:20 – 22:25</div><div class="c"><div class="h">간사이 → 인천 · KE5724</div></div></div>
+        </div>
+      </div>
+
+      <div class="branch" id="d3B">
+        <div class="banner bad">
+          <b>오후가 사라집니다.</b> 17:35 출발이면 15:35에는 공항에 있어야 하고, 그러려면 14:40 난바역 출발입니다. 쿠시카츠를 끝내고 바로 움직여야 하며 자유시간은 없습니다.
+        </div>
+        <div class="tl" style="padding-top:0">
+          <div class="row"><div class="t">14:20 – 14:40</div><div class="c"><div class="h">신세카이 → 난바역 (짐 찾기)</div></div></div>
+          <div class="row"><div class="t">14:40 – 15:35</div><div class="c"><div class="h">간사이공항 이동</div></div></div>
+          <div class="row"><div class="t">15:35 – 17:35</div><div class="c"><div class="h">출국 수속 · 면세점</div><div class="d">캐리어를 직접 끌고 왔으므로 체크인부터 합니다</div></div></div>
+          <div class="row key"><div class="t">17:35 – 19:35</div><div class="c"><div class="h">간사이 → 인천</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>비용</h2>
+    <p class="note">1인 기준 · 사전 결제분과 하루치 현지 비용을 분리했습니다. 개인 쇼핑은 편차가 커서 제외했습니다.</p>
+
+    <div class="cards">
+      <div class="card pre">
+        <div class="ch"><span class="cn">사전 결제</span><span class="cd">BEFORE</span></div>
+        <ul>
+          <li><span class="lb">항공권<small id="preAir">–</small></span><span class="vl" id="vAir">–</span></li>
+          <li><span class="lb">숙소 2박<small id="preLodge">–</small></span><span class="vl" id="vLodge">–</span></li>
+          <li><span class="lb">USJ 티켓<small id="preUsj">–</small></span><span class="vl" id="vUsj">–</span></li>
+        </ul>
+        <div class="sum"><span class="sl">SUBTOTAL</span><span class="sv" id="sPre">–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ch"><span class="cn">1일차 현지</span><span class="cd">11.05 THU</span></div>
+        <ul>
+          <li><span class="lb">점심 라멘 + 생맥<small>¥2,000</small></span><span class="vl">19,400</span></li>
+          <li><span class="lb">저녁 스시 키요하라 + 나마비루<small>¥6,000</small></span><span class="vl">58,200</span></li>
+          <li><span class="lb">2차 우라난바<small>¥3,000</small></span><span class="vl">29,100</span></li>
+          <li><span class="lb">교통<small>공항 → 난바 + 시내 + 도부츠엔마에 왕복 ¥1,900</small></span><span class="vl">18,400</span></li>
+        </ul>
+        <div class="sum"><span class="sl">DAY 1</span><span class="sv">125,100</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ch"><span class="cn">2일차 현지</span><span class="cd">11.06 FRI</span></div>
+        <ul id="d2list"></ul>
+        <div class="sum"><span class="sl">DAY 2</span><span class="sv" id="sD2">–</span></div>
+      </div>
+
+      <div class="card">
+        <div class="ch"><span class="cn">3일차 현지</span><span class="cd">11.07 SAT</span></div>
+        <ul>
+          <li><span class="lb">구로몬 아침 + 맥주<small>¥3,000</small></span><span class="vl">29,100</span></li>
+          <li><span class="lb">쿠시카츠 점심 + 낮술<small>¥3,500</small></span><span class="vl">33,950</span></li>
+          <li><span class="lb">오후 자유시간<small id="pmSm">–</small></span><span class="vl" id="vPm">–</span></li>
+          <li><span class="lb">공항 이동<small>¥970</small></span><span class="vl">9,400</span></li>
+          <li><span class="lb">공항 식사 · 나마비루<small id="apSm">–</small></span><span class="vl" id="vAp">–</span></li>
+        </ul>
+        <div class="sum"><span class="sl">DAY 3</span><span class="sv" id="sD3">–</span></div>
+      </div>
+    </div>
+
+    <div class="grand">
+      <div class="gl">1인 총예산<small id="grandNote">–</small></div>
+      <div class="gv" id="sGrand">–</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>다음 할 일</h2>
+    <p class="note">순서가 있습니다. 위에서부터 처리해야 뒤가 막히지 않습니다.</p>
+    <div class="acts">
+      <div class="act ask">
+        <div class="an">🙋 기타 희망 사항 받기</div>
+        <div class="ad">지금이 <b>추가 의견을 낼 마지막 타이밍</b>입니다. 꼭 가고 싶은 곳, 먹고 싶은 것, 빼고 싶은 일정 — 확정 전에 말해주세요</div>
+      </div>
+      <div class="act hot">
+        <div class="an">에어비앤비 호스트에게 문의</div>
+        <div class="ad">에어비앤비를 검토한다면 <b>정확한 위치 · 침실과 욕실 구성 · 경보기 유무</b> 세 가지를 먼저 확인하세요</div>
+      </div>
+      <div class="act hot">
+        <div class="an">USJ 티켓 예매</div>
+        <div class="ad">티켓 오픈 <b>9월 4일(금)</b> · 옵션 1~3 중 확정 후 4인분 일괄 결제</div>
+      </div>
+      <div class="act hot">
+        <div class="an">마리오카트 시간 지정</div>
+        <div class="ad">익스프레스(옵션 2·3) 구매 시 <b>마리오카트는 탑승 시간을 미리 지정</b>해야 합니다. 지정을 빠뜨리면 못 탑니다</div>
+      </div>
+      <div class="act hot">
+        <div class="an">항공편 확정</div>
+        <div class="ad">옵션을 고르고 <b>4인 동시 발권</b>. 3일차 오후가 여기서 갈립니다</div>
+      </div>
+      <div class="act">
+        <div class="an">스시 키요하라 예약</div>
+        <div class="ad">1일차 저녁 18:00 · 4인. 인원과 날짜가 확정되는 대로 예약하세요. <b>수요일 휴무</b>지만 우리는 목요일이라 괜찮습니다</div>
+      </div>
+      <div class="act">
+        <div class="an">숙소 예약 · 짐 배송 · Visit Japan Web</div>
+        <div class="ad">호텔이면 <b>커넥팅룸 지정 요청</b> · 짐 배송은 2일차 밤 현지 결제 · Visit Japan Web은 출발 전 4명 전원 등록</div>
+      </div>
+    </div>
+
+    <p class="fine">
+      환율 ¥1 = 9.7원 기준 · 숙소는 4인 분할 금액입니다 (호텔 463,765원 / 에어비앤비 376,900원) · 짐 배송 또는 코인락커는 2일차 밤 현지 결제로 잡았습니다 · 개인 쇼핑(덴덴타운 굿즈, 돈키호테, 면세점)과 여행자보험·eSIM은 각자 부담으로 총예산에서 제외했습니다 · 오사카 주유패스는 이번 동선에서 쓸 시설이 없어 구매 대상이 아닙니다.
+    </p>
+  </section>
+</div>
+
+<script>
+var F = {
+  A: { fare:531100, bag:20000, pm:14600, ap:24200,
+    pmSm:"돈키호테·우라난바 2차 등 ¥1,500",
+    apSm:"면세점 마지막 잔 ¥2,500",
+    kushiD:"쇼와 감성의 좁은 골목에서 구경과 식사를 한 번에. 피크 전인 13시대 입장을 권합니다.",
+    free:"3시간", name:"대한항공" },
+  B: { fare:476000, bag:8000, pm:0, ap:9700,
+    pmSm:"자유시간 없음",
+    apSm:"탑승 전 간단히 ¥1,000",
+    kushiD:"여유가 전혀 없습니다. 웨이팅이 길면 미련 없이 다른 가게로 이동하세요.",
+    free:"없음", name:"파라타항공" }
+};
+
+var U = {
+  '1': { price:144500, onsen:true, exp:"없음",
+    pre:"입장권 + 닌텐도 확약권 + 간사이 조이패스",
+    title:"USJ 올인, 그리고 온천",
+    banner:"<b>익스프레스 패스가 없는 구성입니다.</b> 슈퍼 닌텐도 월드 <b>에리어 입장</b>은 확약되지만, 마리오카트·해리포터 등 개별 어트랙션은 일반 대기줄에 서야 합니다. 금요일이라도 인기 어트랙션은 60~120분을 각오하세요. 대신 간사이 조이패스로 <b>소라니와 온천이 무료</b>입니다.",
+    rides:null,
+    entryH:"슈퍼 닌텐도 월드 입장", entryD:"확약권 보유 — 에리어 입장 정리권 경쟁은 없습니다",
+    parkD:"어트랙션은 일반 대기줄 이용 · 파크 내 낮맥주는 필수 코스" },
+  '2': { price:326251, onsen:false, exp:"5개",
+    pre:"입장권 94,900 + 레이스&미니언 스페셜5 231,351",
+    title:"USJ 올인 — 익스프레스 5",
+    banner:"<b>인기 어트랙션 5개를 우선탑승</b>하고 슈퍼 닌텐도 월드 <b>에리어 입장도 포함</b>됩니다. 대기가 거의 사라져 하루가 훨씬 여유로워집니다. 간사이 조이패스가 빠지므로 소라니와 대신 <b>숙소 쪽 다이헤이노유 난바 온천</b>에서 피로를 풀고, 저녁은 숙소 근처에서 즐깁니다.",
+    rides:[["마리오카트 : 쿠파의 도전","탑승 시간 사전 지정 필수"],["해리 포터 앤드 더 포비든 저니",""],["미니언 메이헴 미션 ~대악당이 되는 길~",""],["미니언 메이헴",""],["쥬라기공원 더 라이드",""]],
+    entryH:"마리오카트 지정 시간 확인", entryD:"사전에 지정한 탑승 시간에 맞춰 하루 동선을 짭니다",
+    parkD:"익스프레스 5개 소화 + 나머지는 일반 대기줄 · 파크 내 낮맥주는 필수 코스" },
+  '3': { price:222184, onsen:false, exp:"4개",
+    pre:"입장권 94,900 + 레이스&죠스4 144,484",
+    title:"USJ 올인 — 익스프레스 4",
+    banner:"<b>인기 어트랙션 4개를 우선탑승</b>하고 슈퍼 닌텐도 월드 <b>에리어 입장도 포함</b>됩니다. 옵션 2에서 미니언 메이헴 미션 하나가 빠지는 대신 <b>10만원가량 저렴</b>합니다. 조이패스가 빠지므로 소라니와 대신 <b>다이헤이노유 난바 온천</b>으로 갑니다.",
+    rides:[["마리오카트 : 쿠파의 도전","탑승 시간 사전 지정 필수"],["해리 포터 앤드 더 포비든 저니",""],["미니언 메이헴",""],["쥬라기공원 더 라이드","죠스와 택1 — 쥬라기 선택"]],
+    entryH:"마리오카트 지정 시간 확인", entryD:"사전에 지정한 탑승 시간에 맞춰 하루 동선을 짭니다",
+    parkD:"익스프레스 4개 소화 + 나머지는 일반 대기줄 · 파크 내 낮맥주는 필수 코스" }
+};
+
+var L = {
+  H: { price:115941, name:"카락사 호텔",
+    preLodge:"카락사 호텔 커넥팅룸 ×2 · 총 463,765원",
+    lodgeH:"호텔 프런트에 짐 맡기기",
+    lodgeD:"체크인 전에도 프런트에서 보관해 줍니다. 로비에 무료 음료·스낵이 상시 준비되어 있습니다.",
+    night1D:"우오덴 4.1 · 유세이 4.1(사케) · 진베 4.2(오뎅). 숙소가 도보권이라 시간 신경 쓰지 않아도 됩니다.",
+    wakeD:"욕실이 2개라 4명이 씻고 나가는 데 무리 없습니다",
+    usjMoveD:"니시신사이바시 → 유니버설시티 약 35~40분",
+    bagT:"08:30", bagH:"체크아웃 + 프런트에 짐 발송 — 09:00 마감 엄수",
+    bagD:"프런트에 맡기면 오후 4시까지 간사이공항 제1터미널로 배송됩니다. 8시 30분을 넘기면 이 서비스를 쓸 수 없습니다.",
+    bookH:"에어포터 신청 · 결제",
+    bookD:"다음 날 아침 발송분을 전날 밤에 예약해 둡니다. 캐리어 개수만큼 신청하세요." },
+  A: { price:94225, name:"에어비앤비",
+    preLodge:"에어비앤비 집 전체 · 난바 · 총 376,900원",
+    lodgeH:"에어비앤비에 짐 두기",
+    lodgeD:"지도 기준 도톤보리에서 도보 3분. 셀프 체크인이라 체크인 시간 전 짐 보관이 가능한지 호스트에게 미리 확인하세요.",
+    night1D:"우오덴 4.1 · 유세이 4.1(사케) · 진베 4.2(오뎅). 우라난바가 숙소 바로 옆이라 시간 신경 쓸 필요가 없습니다.",
+    wakeD:"욕실이 1개뿐이라 씻는 순서를 전날 밤에 정해두세요. 이 일정에서 가장 빠듯한 지점입니다",
+    usjMoveD:"난바 → 유니버설시티 약 35~40분",
+    bagT:"08:30", bagH:"체크아웃 + 난바역 n·e·s·t 카운터에 짐 발송",
+    bagD:"프런트가 없어 호텔 발송은 안 되지만, 난카이 난바역 2층 카운터가 도보 5분 거리입니다(12:00 마감). 맡긴 뒤 구로몬까지 걸어가면 되니 동선 손실은 거의 없습니다.",
+    bookH:"n·e·s·t 카운터 위치 확인",
+    bookD:"난카이 난바역 2층 중앙 개찰구 앞. 숙소에서 도보 5분이니 아침에 캐리어를 끌고 걸어가면 됩니다." }
+};
+
+var D2_ONSEN = [
+  ["USJ 파크 내 식음료","¥4,000","38,800",""],
+  ["소라니와 온천","간사이 조이패스로 무료","0","zero"],
+  ["저녁 이자카야","¥5,000","48,500",""],
+  ["교통","USJ · 벤텐초 · 난바 ¥1,200","11,600",""]
+];
+var D2_NO = [
+  ["USJ 파크 내 식음료","¥4,000","38,800",""],
+  ["다이헤이노유 난바 온천","입욕료 ¥850 안팎","8,200",""],
+  ["저녁 이자카야 — 숙소 근처","¥5,000","48,500",""],
+  ["교통","USJ · 사쿠라가와 · 난바 ¥800","7,800",""]
+];
+
+var D1 = 125100, D3_FIX = 29100 + 33950 + 9400;
+var curF = 'A', curU = '1', curL = 'H';
+
+function won(n){ return n.toLocaleString('ko-KR'); }
+function set(id, v){ document.getElementById(id).textContent = v; }
+function html(id, v){ document.getElementById(id).innerHTML = v; }
+
+function pickF(k){ curF = k; render(); }
+function pickU(k){ curU = k; render(); }
+function pickL(k){ curL = k; render(); }
+
+function render(){
+  var f = F[curF], u = U[curU], l = L[curL];
+
+  document.getElementById('btnA').setAttribute('aria-pressed', curF === 'A');
+  document.getElementById('btnB').setAttribute('aria-pressed', curF === 'B');
+  ['1','2','3'].forEach(function(k){
+    document.getElementById('btnU' + k).setAttribute('aria-pressed', curU === k);
+  });
+  document.getElementById('btnLH').setAttribute('aria-pressed', curL === 'H');
+  document.getElementById('btnLA').setAttribute('aria-pressed', curL === 'A');
+  document.getElementById('sxH').className = 'sx' + (curL === 'H' ? ' pick' : '');
+  document.getElementById('sxA').className = 'sx' + (curL === 'A' ? ' pick' : '');
+
+  document.getElementById('d3A').className = 'branch' + (curF === 'A' ? ' on' : '');
+  document.getElementById('d3B').className = 'branch' + (curF === 'B' ? ' on' : '');
+  document.getElementById('d2Onsen').className = 'branch' + (u.onsen ? ' on' : '');
+  document.getElementById('d2NoOnsen').className = 'branch' + (u.onsen ? '' : ' on');
+
+  set('lodgeH', l.lodgeH); set('lodgeD', l.lodgeD);
+  set('night1D', l.night1D);
+  set('wakeD', l.wakeD); set('usjMoveD', l.usjMoveD);
+
+  var bagT, bagH, bagD, bookH, bookD, bagLb, bagSm;
+  if (curF === 'B') {
+    bagT = '08:30';
+    bagH = '체크아웃 + 난바역 코인락커 보관';
+    bagD = '짐 배송은 공항 수령이 오후 4시부터라 17:35 출발편에 못 맞춥니다. 공항 가는 길에 다시 찾을 수 있게 난바역 락커를 쓰세요.';
+    bookH = '코인락커 위치 확인';
+    bookD = '난바역 락커는 오전에 빠르게 찹니다. 위치와 여유 칸을 전날 봐 두세요.';
+    bagLb = '코인락커'; bagSm = '난바역 · 짐 배송 이용 불가';
+  } else {
+    bagT = l.bagT; bagH = l.bagH; bagD = l.bagD;
+    bookH = l.bookH; bookD = l.bookD;
+    bagLb = '짐 배송'; bagSm = curL === 'H' ? '에어포터 · 호텔 프런트 발송' : '에어포터 · 난바역 n·e·s·t 카운터';
+  }
+  set('bagT', bagT); set('bagH', bagH); set('bagD', bagD);
+  set('bookA', bookH); set('bookAD', bookD);
+  set('bookB', bookH); set('bookBD', bookD);
+
+  set('kushiD', f.kushiD);
+  document.getElementById('kushiRow').className = 'row' + (curF === 'B' ? ' warn' : '');
+
+  set('d2Title', u.title);
+  html('usjBanner', u.banner);
+  set('entryH', u.entryH); set('entryD', u.entryD); set('parkD', u.parkD);
+  document.getElementById('entryRow').className = 'row' + (curU === '1' ? '' : ' warn');
+  document.getElementById('wakeRow').className = 'row' + (curL === 'A' ? ' warn' : '');
+
+  var rp = document.getElementById('ridePanel');
+  if (u.rides) {
+    rp.style.display = 'block';
+    set('rideTitle', curU === '2' ? '레이스 & 미니언 스페셜 5' : '레이스 & 죠스 4');
+    set('rideCount', '우선탑승 ' + u.rides.length + '개 + 에리어 입장');
+    html('rideList', u.rides.map(function(r){
+      return '<li>' + r[0] + (r[1] ? '<em>⚠ ' + r[1] + '</em>' : '') + '</li>';
+    }).join(''));
+  } else {
+    rp.style.display = 'none';
+  }
+
+  set('preAir', curF === 'A' ? '대한항공 KE5721/5724 · 07:55 출발 / 20:20 귀국' : '파라타항공 · 08:55 출발 / 17:35 귀국');
+  set('vAir', won(f.fare));
+  set('preLodge', l.preLodge); set('vLodge', won(l.price));
+  set('preUsj', u.pre); set('vUsj', won(u.price));
+
+  set('pmSm', f.pmSm);
+  var pmEl = document.getElementById('vPm');
+  pmEl.textContent = f.pm ? won(f.pm) : '제외';
+  pmEl.className = 'vl' + (f.pm ? '' : ' na');
+  set('apSm', f.apSm); set('vAp', won(f.ap));
+
+  var rows = (u.onsen ? D2_ONSEN : D2_NO).slice();
+  rows.push([bagLb, bagSm, won(f.bag), ""]);
+  html('d2list', rows.map(function(r){
+    return '<li><span class="lb">' + r[0] + '<small>' + r[1] + '</small></span>' +
+           '<span class="vl ' + r[3] + '">' + r[2] + '</span></li>';
+  }).join(''));
+
+  var d2 = (u.onsen ? 98900 : 103300) + f.bag;
+  var d3 = D3_FIX + f.pm + f.ap;
+  var pre = f.fare + l.price + u.price;
+  var total = pre + D1 + d2 + d3;
+
+  set('sPre', won(pre)); set('sD2', won(d2)); set('sD3', won(d3));
+  set('sGrand', won(total) + '원');
+  set('sTotal', won(Math.round(total / 10000)) + '만원');
+  set('sFree', f.free);
+  set('sExp', u.exp);
+  set('grandNote', f.name + ' · USJ 옵션 ' + curU + ' · ' + l.name);
+}
+render();
+</script>
+</body>
+</html>
