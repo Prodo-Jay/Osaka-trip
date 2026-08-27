@@ -120,6 +120,12 @@ body{
 
 .branch{display:none}
 .branch.on{display:block}
+.miniopts{display:flex;gap:10px;margin:16px 22px 0;flex-wrap:wrap}
+.mopt{flex:1;min-width:220px;background:var(--panel2);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;cursor:pointer;color:inherit;font:inherit;text-align:left;transition:border-color .2s,background .2s}
+.mopt:hover{border-color:#3E4A5C}
+.mopt[aria-pressed="true"]{border-color:var(--beer);background:#231D14}
+.mopt .mo1{font-weight:800;font-size:13.5px}
+.mopt .mo2{font-family:'Roboto Mono',monospace;font-size:10.5px;color:var(--mute);margin-top:3px;letter-spacing:.02em}
 .banner{margin:4px 22px 18px;padding:13px 16px;border-radius:10px;font-size:13px;border:1px solid;line-height:1.55}
 .banner.flush{margin:16px 0 0}
 .banner.good{background:rgba(87,182,168,.08);border-color:rgba(87,182,168,.32);color:#B9E3DC}
@@ -246,6 +252,7 @@ body{
   .row .c{padding:2px 0 14px;border-left:none}
   .row .c:before{display:none}
   .banner,.rides{margin-left:20px;margin-right:20px}
+  .miniopts{margin:14px 20px 0}
   .banner.flush{margin-left:0;margin-right:0}
   .meals{padding:6px 20px 18px}
   .meal{grid-template-columns:56px 1fr}
@@ -362,19 +369,48 @@ body{
     <div class="day">
       <div class="dayhead">
         <span class="dayno">1</span><span class="daydate">11.05 THU</span>
-        <span class="daytitle">도착, 스시로 첫 건배</span>
+        <span class="daytitle">도착, 오마카세로 첫 건배</span>
+      </div>
+      <div class="miniopts">
+        <button class="mopt" id="btnD1A" aria-pressed="true" onclick="pickD1('A')">
+          <div class="mo1">플랜 A — 얼리 체크인 성공</div>
+          <div class="mo2">짐 풀고 점심 → 우메다 굿즈투어 맛보기 → 도톤보리</div>
+        </button>
+        <button class="mopt" id="btnD1B" aria-pressed="false" onclick="pickD1('B')">
+          <div class="mo1">플랜 B — 수속 지연 · 체크인 불가 시</div>
+          <div class="mo2">락커에 짐 → 점심 → 15시 체크인 → 도톤보리 집중</div>
+        </button>
       </div>
       <div class="tl">
         <div class="row"><div class="t">05:55</div><div class="c"><div class="h">인천공항 집결</div><div class="d">출발 2시간 전 · Visit Japan Web 등록 완료 확인 — 입국심사 시간이 크게 줄어듭니다</div></div></div>
         <div class="row"><div class="t">07:55 – 09:40</div><div class="c"><div class="h">인천 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Kansai+International+Airport" target="_blank" rel="noopener">간사이공항</a> · KE5721</div></div></div>
         <div class="row"><div class="t">09:40 – 10:40</div><div class="c"><div class="h">입국심사 · 수하물 수취</div></div></div>
         <div class="row"><div class="t">10:40 – 11:35</div><div class="c"><div class="h">난카이선으로 <a href="https://www.google.com/maps/search/?api=1&amp;query=Nankai+Namba+Station" target="_blank" rel="noopener">난바역</a> 이동</div><div class="d">공항급행 ¥970 · 라피트 ¥1,490 (7분 차이)</div></div></div>
-        <div class="row"><div class="t">11:40 – 12:15</div><div class="c"><div class="h" id="lodgeH">–</div><div class="d" id="lodgeD">–</div></div></div>
-        <div class="row"><div class="t">12:25 – 12:45</div><div class="c"><div class="h">난바 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Yodoyabashi+Station" target="_blank" rel="noopener">요도야바시</a></div><div class="d">미도스지선 4정거장 · 약 8분. 13시 예약이라 여유 있게 움직입니다</div></div></div>
-        <div class="row key"><div class="t">13:00 – 14:30</div><div class="c"><div class="h">점심 — <a href="https://maps.app.goo.gl/9UBb9VU3gg96k2yj7" target="_blank" rel="noopener">오마카세 스시</a> (요도야바시)<span class="chip free">예약 완료</span></div><div class="d">요도야바시역 도보 5분 · 인당 14만원 — 첫 끼부터 이번 여행의 하이라이트입니다. 가게명은 확정되는 대로 기입</div></div></div>
-        <div class="row"><div class="t">14:30 – 15:10</div><div class="c"><div class="h">요도야바시 → 신사이바시 복귀</div><div class="d">미도스지선 2정거장. 배 꺼뜨릴 겸 기타하마·나카노시마 강변을 잠깐 걸어도 좋습니다</div></div></div>
-        
-        <div class="row"><div class="t">15:10 – 18:00</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Shinsaibashisuji+Shopping+Street" target="_blank" rel="noopener">신사이바시</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Amerikamura+Osaka" target="_blank" rel="noopener">아메리카무라</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Dotonbori" target="_blank" rel="noopener">도톤보리</a></div><div class="d">첫날은 무리하지 않고 거리 구경 위주로. 오마카세 여운은 커피로 달랩니다</div></div></div>
+      </div>
+
+      <div class="branch on" id="d1A">
+        <div class="tl" style="padding-top:0">
+          <div class="row"><div class="t">11:40 – 12:15</div><div class="c"><div class="h" id="lodgeH">–</div><div class="d" id="lodgeD">–</div></div></div>
+          <div class="row"><div class="t">12:25 – 12:45</div><div class="c"><div class="h">난바 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Yodoyabashi+Station" target="_blank" rel="noopener">요도야바시</a></div><div class="d">미도스지선 4정거장 · 약 8분. 13시 예약이라 여유 있게 움직입니다</div></div></div>
+          <div class="row key"><div class="t">13:00 – 14:30</div><div class="c"><div class="h">점심 — <a href="https://maps.app.goo.gl/9UBb9VU3gg96k2yj7" target="_blank" rel="noopener">오마카세 스시</a> (요도야바시)<span class="chip free">예약 완료</span></div><div class="d">요도야바시역 도보 5분 · 인당 14만원 — 첫 끼부터 이번 여행의 하이라이트입니다. 가게명은 확정되는 대로 기입</div></div></div>
+          <div class="row"><div class="t">14:40 – 14:50</div><div class="c"><div class="h">요도야바시 → 우메다</div><div class="d">미도스지선 2정거장 · 4분. 점심 자리에서 북쪽으로 조금만 더 갑니다</div></div></div>
+          <div class="row key"><div class="t">14:50 – 16:40</div><div class="c"><div class="h">우메다 굿즈투어 맛보기 — <a href="https://www.google.com/maps/search/?api=1&amp;query=Mandarake+Umeda&amp;query_place_id=ChIJmxtDKuvmAGARwA6ydJZjHcc" target="_blank" rel="noopener">만다라케</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Lashinbang+Osaka+Umeda&amp;query_place_id=ChIJG703ETDnAGARc5mbRlO9-Jo" target="_blank" rel="noopener">라신반</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Animate+Umeda&amp;query_place_id=ChIJuwLzDpTmAGARlCzB_9LgCms" target="_blank" rel="noopener">애니메이트</a></div><div class="d">만다라케 우메다 ★4.1 (중고 피규어·레트로 성지) → 라신반 우메다 ★4.5 (중고 애니 굿즈) → 애니메이트 차야마치. 세 곳 모두 도보 10분 내 — 3일차 덴덴타운의 예고편입니다</div></div></div>
+          <div class="row"><div class="t">16:40 – 17:00</div><div class="c"><div class="h">우메다 → 신사이바시</div><div class="d">미도스지선 직행 7분</div></div></div>
+          <div class="row"><div class="t">17:00 – 18:00</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dotonbori" target="_blank" rel="noopener">도톤보리</a> · 에비스바시 한 바퀴</div><div class="d">숙소 앞 동네 예습 겸 가볍게. 저녁 집합 전 자유 시간</div></div></div>
+        </div>
+      </div>
+
+      <div class="branch" id="d1B">
+        <div class="tl" style="padding-top:0">
+          <div class="row warn"><div class="t">11:40 – 12:10</div><div class="c"><div class="h">난바역 코인락커에 캐리어 보관</div><div class="d">입국 수속이 밀렸거나 호스트가 얼리 체크인을 거절한 경우의 플랜입니다. 13시 예약이 우선이니 짐은 락커(대형 ¥700~1,000/개)에 두고 몸만 갑니다</div></div></div>
+          <div class="row"><div class="t">12:20 – 12:45</div><div class="c"><div class="h">난바 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Yodoyabashi+Station" target="_blank" rel="noopener">요도야바시</a></div><div class="d">미도스지선 4정거장 · 약 8분. 13시 예약이라 여유 있게 움직입니다</div></div></div>
+          <div class="row key"><div class="t">13:00 – 14:30</div><div class="c"><div class="h">점심 — <a href="https://maps.app.goo.gl/9UBb9VU3gg96k2yj7" target="_blank" rel="noopener">오마카세 스시</a> (요도야바시)<span class="chip free">예약 완료</span></div><div class="d">요도야바시역 도보 5분 · 인당 14만원 — 첫 끼부터 이번 여행의 하이라이트입니다. 가게명은 확정되는 대로 기입</div></div></div>
+          <div class="row"><div class="t">14:40 – 15:20</div><div class="c"><div class="h">난바 복귀 → 짐 찾아 체크인</div><div class="d">표준 체크인 시간(15시 전후)에 맞습니다. 셀프 체크인이라 대기는 없습니다</div></div></div>
+          <div class="row"><div class="t">15:30 – 18:00</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Shinsaibashisuji+Shopping+Street" target="_blank" rel="noopener">신사이바시</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Amerikamura+Osaka" target="_blank" rel="noopener">아메리카무라</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Dotonbori" target="_blank" rel="noopener">도톤보리</a></div><div class="d">2시간 반이면 충분합니다 — 신사이바시스지 아케이드(40분) → 아메무라 삼각공원·빈티지숍(40분) → 도톤보리 강변·글리코 사인(40분) → 호젠지요코초 골목(20분) 순서가 딱 맞고, 남으면 돈키호테 관람차가 있습니다</div></div></div>
+        </div>
+      </div>
+
+      <div class="tl" style="padding-top:0">
         <div class="row key"><div class="t">18:00 – 20:30</div><div class="c"><div class="h">저녁 — 야키토리 + 나마비루</div><div class="d">점심이 오마카세 스시라 저녁은 숯불 꼬치로 결을 바꿉니다 · 1순위 <a href="https://www.google.com/maps/search/?api=1&amp;query=TORA+Tori-ya+Namba+Sennichimae&amp;query_place_id=ChIJ4xUpfcnnAGARvd-3XD30N4k" target="_blank" rel="noopener">토라토리야</a> ★4.8 — 숙소 도보 5분 · 자정까지 · 구글맵으로 단체 예약 가능</div></div></div>
         <div class="row"><div class="t">20:30 – 20:45</div><div class="c"><div class="h">난바 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Dobutsuen-mae+Station" target="_blank" rel="noopener">도부츠엔마에</a></div><div class="d">미도스지선 4분. 신세카이·토비타신치가 모두 이 역에서 도보권입니다</div></div></div>
         <div class="row"><div class="t">20:45 – 21:30</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Tsutenkaku&amp;query_place_id=ChIJ_0Lgd2DnAGARV0X03lbPy-U" target="_blank" rel="noopener">신세카이</a> 야경 · 토비타신치</div><div class="d">츠텐카쿠 조명을 보고 토비타신치 메인스트리트를 지나 난바로 복귀합니다</div></div></div>
@@ -655,7 +691,7 @@ body{
       </div>
       <div class="act hot">
         <div class="an">숙소 예약 — 에어비앤비 확정</div>
-        <div class="ad">난바 1초메 토라야빌딩 리스팅으로 <b>숙소는 확정</b> (침실 3 · 욕실 2.5). 예약을 진행하고 <b>경보기 유무</b>만 리스팅에서 확인하세요</div>
+        <div class="ad">난바 1초메 토라야빌딩 리스팅으로 <b>숙소는 확정</b> (침실 3 · 욕실 2.5). 예약을 진행하고 <b>경보기 유무</b>를 확인한 뒤, 호스트에게 <b>얼리 체크인·짐 보관 가능 여부</b>를 물어보세요 — 1일차 플랜 A/B가 여기서 갈립니다</div>
       </div>
       <div class="act hot">
         <div class="an">USJ 라이드 선정</div>
@@ -774,7 +810,7 @@ var D2_NO = [
 ];
 
 var D1 = 134800, D3_FIX = 29100 + 33950 + 9400 + 7800;
-var curF = 'A', curU = '1', curL = 'A';
+var curF = 'A', curU = '1', curL = 'A', curD1 = 'A';
 
 function won(n){ return n.toLocaleString('ko-KR'); }
 function set(id, v){ document.getElementById(id).textContent = v; }
@@ -783,6 +819,7 @@ function html(id, v){ document.getElementById(id).innerHTML = v; }
 function pickF(k){ curF = k; render(); }
 function pickU(k){ curU = k; render(); }
 function pickL(k){ curL = k; render(); }
+function pickD1(k){ curD1 = k; render(); }
 
 function render(){
   var f = F[curF], u = U[curU], l = L[curL];
@@ -799,6 +836,10 @@ function render(){
 
   document.getElementById('d3A').className = 'branch' + (curF === 'A' ? ' on' : '');
   document.getElementById('d3B').className = 'branch' + (curF === 'B' ? ' on' : '');
+  document.getElementById('btnD1A').setAttribute('aria-pressed', curD1 === 'A');
+  document.getElementById('btnD1B').setAttribute('aria-pressed', curD1 === 'B');
+  document.getElementById('d1A').className = 'branch' + (curD1 === 'A' ? ' on' : '');
+  document.getElementById('d1B').className = 'branch' + (curD1 === 'B' ? ' on' : '');
   document.getElementById('d2Onsen').className = 'branch' + (u.onsen ? ' on' : '');
   document.getElementById('d2NoOnsen').className = 'branch' + (u.onsen ? '' : ' on');
 
