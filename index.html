@@ -104,6 +104,10 @@ body{
 .row.key .c:before{background:var(--beer);box-shadow:0 0 0 3px rgba(233,166,60,.18)}
 .row.warn .c:before{background:var(--neon);box-shadow:0 0 0 3px rgba(240,86,95,.18)}
 .row .h{font-weight:600;font-size:15px}
+.row .h a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--beer)}
+.row .h a:hover{color:var(--beer)}
+.row .d a{color:#CFC8BB;text-decoration:none;border-bottom:1px dotted var(--mute)}
+.row .d a:hover{color:var(--beer)}
 .row.key .h{color:var(--beer)}
 .row .d{font-size:13px;color:var(--mute);margin-top:3px}
 .chip{
@@ -297,65 +301,50 @@ body{
     </div>
 
     <div class="switch">
-      <span class="lbl">③ 숙소 — 아침 준비와 짐 배송이 여기서 갈립니다</span>
+      <span class="lbl">③ 숙소 — 에어비앤비로 확정 · 호텔은 비교용으로 남겨둡니다</span>
       <div class="opts">
-        <button class="opt" id="btnLH" aria-pressed="true" onclick="pickL('H')">
-          <div class="air">카락사 호텔 <span class="tag">커넥팅룸 ×2</span></div>
+        <button class="opt" id="btnLH" aria-pressed="false" onclick="pickL('H')">
+          <div class="air">카락사 호텔 <span class="tag">비교용</span></div>
           <div class="times">니시신사이바시 · ★4.4 (1,180)<br>총 463,765원</div>
           <div class="fare">115,941<span>원 / 인</span></div>
         </button>
-        <button class="opt" id="btnLA" aria-pressed="false" onclick="pickL('A')">
-          <div class="air">에어비앤비 <span class="tag">집 전체</span></div>
-          <div class="times">난바 · 도톤보리 도보 3분 · ★4.75 (40)<br>총 376,900원</div>
-          <div class="fare">94,225<span>원 / 인</span></div>
+        <button class="opt" id="btnLA" aria-pressed="true" onclick="pickL('A')">
+          <div class="air">에어비앤비 <span class="tag">✓ 확정</span></div>
+          <div class="times">난바 1초메 · 에비스바시 다리 도보 1분<br>총 444,055원</div>
+          <div class="fare">111,014<span>원 / 인</span></div>
         </button>
       </div>
 
       <div class="stayx" style="margin-top:14px">
         <div class="sx" id="sxH">
-          <div class="sxh"><span class="sxn">카락사 호텔 오사카 난바</span><span class="sxp">+21,716원</span></div>
+          <div class="sxh"><span class="sxn">카락사 호텔 오사카 난바</span><span class="sxp">+4,927원</span></div>
           <div class="sxm">커넥팅룸 2개 · 니시신사이바시 · 도톤보리 도보 5분</div>
           <ul>
             <li class="p"><b>욕실 2개</b> — 2일차 아침 8시 출발이 수월합니다</li>
             <li class="p"><b>프런트 짐 발송</b> — 3일차 아침에 맡기기만 하면 끝</li>
-            <li class="p">커넥팅룸이라 내부 문으로 오가며 넷이 모일 수 있음</li>
-            <li class="p">로비 음료·스낵 24시간 무료 · 세탁실 · 매일 청소 · 수건 매일 교체</li>
-            <li class="p">도톤보리 도보권 → 밤에 걸어서 귀가</li>
-            <li class="p">후기 1,180개로 검증된 곳 · 커넥팅룸 사전 보장 사례 있음</li>
-            <li class="m">객실과 욕실이 좁은 편 (3성급 수준)</li>
+            <li class="p">로비 음료·스낵 24시간 무료 · 매일 청소 · 수건 매일 교체</li>
             <li class="m">방이 갈려 있어 '넷이 한 공간' 느낌은 덜함</li>
-            <li class="m">1인당 21,716원 더 비쌈</li>
+            <li class="m">1인당 4,927원 더 비쌈</li>
           </ul>
         </div>
         <div class="sx" id="sxA">
-          <div class="sxh"><span class="sxn">에어비앤비 · 난바</span><span class="sxp">−21,716원</span></div>
-          <div class="sxm">침실 3 · 침대 5 · 욕실 1 · 주방/거실 · 셀프 체크인</div>
+          <div class="sxh"><span class="sxn">에어비앤비 · 난바 1초메 ✓</span><span class="sxp">−4,927원</span></div>
+          <div class="sxm">단독주택 2개 층 · 침실 3 · 욕실 2.5 · 총 444,055원</div>
           <ul>
-            <li class="p"><b>위치가 가장 좋습니다</b> — 지도 기준 도톤보리 3분, 난바역 5분, 우라난바 바로 옆</li>
-            <li class="p">넷이 한 공간 · 거실에서 새벽까지 편하게 마실 수 있음</li>
-            <li class="p">주방·세탁기 완비 · 평점 4.75 (가격 대비 만족도 4.8)</li>
-            <li class="p">1인당 21,716원 저렴</li>
-            <li class="m"><b>욕실·화장실이 1개</b> — 2일차 아침 넷이 8시에 나가기 빠듯</li>
-            <li class="m">프런트가 없어 <b>호텔 짐 발송 불가</b> (난바역 카운터가 도보 5분이라 대안은 쉬움)</li>
-            <li class="m">셀프 체크인 · 매일 청소·수건 교체 없음 · 조미료 없음</li>
-            <li class="q">아래 두 가지를 <b>예약 전에 확인</b>해야 합니다</li>
+            <li class="p"><b>위치가 압도적입니다</b> — <a href="https://maps.app.goo.gl/Yhit1kfAfWjcik4x9" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px dotted var(--beer);text-decoration:none">에비스바시 다리 남쪽 120m</a>, 도톤보리 도보 1~2분 · 난바역 5분</li>
+            <li class="p"><b>욕실 2.5개</b> — 샤워부스+화장실 2, 샤워 전용 1. 아침에 셋이 동시에 씻을 수 있어 병목이 없습니다</li>
+            <li class="p">도톤보리·우라난바 한복판이라 매일 밤 걸어서 귀가</li>
+            <li class="p">2개 층 단독주택 · 침실 3개 — 넷이 거실에 모여 마실 수 있음</li>
+            <li class="p">1인당 4,927원 저렴 · <a href="https://www.airbnb.co.kr/rooms/1735271292459680343" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px dotted var(--beer);text-decoration:none">리스팅 보기</a></li>
+            <li class="m">프런트가 없어 짐 발송은 난바역 n·e·s·t 카운터 이용 (도보 5분)</li>
+            <li class="q"><b>화재·CO 경보기 유무</b>만 예약 전에 리스팅에서 확인하면 끝</li>
           </ul>
         </div>
       </div>
 
-      <div class="banner warn flush">
-        <b>에어비앤비 — 예약 전 호스트에게 물어볼 두 가지</b>
-        <ul>
-          <li><b>① 지도와 설명글의 위치가 다릅니다.</b> 지도 핀은 에비스바시 다리와 난바역 사이, 미도스지 동쪽 블록에 찍혀 있어 <b>도톤보리 도보 3분</b> 거리입니다. 그런데 리스팅 설명글에는 "쓰루하시역 도보 5분 · 난바 지하철 6분 · USJ 28분"으로 적혀 있습니다. 두 곳은 3km 넘게 떨어져 있어 <b>어느 쪽이냐에 따라 매일 밤 귀갓길이 완전히 달라집니다.</b></li>
-          <li><b>② 설명글이 다른 매물 것일 가능성이 있습니다.</b> 후기 138개에 공동 호스트까지 둔 다주택 운영자라 문구를 재사용했을 수 있습니다. 그렇다면 침실 구성(더블1·싱글2·이불2), 2층 좁은 계단, 화재·일산화탄소 경보기 없음 같은 정보도 <b>이 집 얘기가 아닐 수 있습니다.</b> 특히 경보기 여부는 넷이 자는 집이라 그냥 넘기기 어렵습니다.</li>
-        </ul>
-        <span class="close">호스트 응답률 100%, 1시간 내 응답입니다. <b>정확한 위치와 침실·욕실 구성, 경보기 유무</b> 세 가지만 메시지로 물어보면 판단이 끝납니다.</span>
-      </div>
-
-      <div class="verdict">
-        <b>판단 포인트 —</b> 위치가 지도대로라면 에어비앤비가 더 싸고 더 중심입니다. 그러면 호텔이 값을 하는 지점은 <b>욕실 2개</b>와 <b>프런트 짐 발송</b> 딱 둘로 좁혀집니다.
-        2일차에 넷이 아침 8시에 나가야 USJ 개장에 맞출 수 있는데, 이 일정의 성패가 거기 달려 있다고 보면 2만원은 싼 값입니다.
-        반대로 <b>"넷이 거실에 모여 새벽까지 마시는 것"</b> 자체가 이번 여행의 목적이라면 에어비앤비가 답입니다.
+      <div class="banner good flush">
+        <b>숙소 확정 — 에어비앤비, 난바 1초메 토라야빌딩</b>
+        추정 주소는 <a href="https://maps.app.goo.gl/Yhit1kfAfWjcik4x9" target="_blank" rel="noopener" style="color:inherit;font-weight:800;border-bottom:1px dotted currentColor;text-decoration:none">1-chōme-5-14 Namba</a> — 에비스바시 다리 바로 남쪽, 이번 일정의 사실상 중심점입니다. 도톤보리 도보 1~2분, 우라난바 3분, 난바역 5분. 구성은 <b>2개 층 단독주택 · 침실 3 · 욕실 2.5</b>(샤워 가능 공간 3곳)라 아침 병목 걱정도 없습니다. 정확한 위치 안내는 예약 확정 후 호스트 메시지로 옵니다.
       </div>
     </div>
 
@@ -377,17 +366,20 @@ body{
       </div>
       <div class="tl">
         <div class="row"><div class="t">05:55</div><div class="c"><div class="h">인천공항 집결</div><div class="d">출발 2시간 전 · Visit Japan Web 등록 완료 확인 — 입국심사 시간이 크게 줄어듭니다</div></div></div>
-        <div class="row"><div class="t">07:55 – 09:40</div><div class="c"><div class="h">인천 → 간사이 · KE5721</div></div></div>
+        <div class="row"><div class="t">07:55 – 09:40</div><div class="c"><div class="h">인천 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Kansai+International+Airport" target="_blank" rel="noopener">간사이공항</a> · KE5721</div></div></div>
         <div class="row"><div class="t">09:40 – 10:40</div><div class="c"><div class="h">입국심사 · 수하물 수취</div></div></div>
-        <div class="row"><div class="t">10:40 – 11:35</div><div class="c"><div class="h">난카이선으로 난바 이동</div><div class="d">공항급행 ¥970 · 라피트 ¥1,490 (7분 차이)</div></div></div>
-        <div class="row"><div class="t">11:40 – 13:00</div><div class="c"><div class="h">점심 — 라멘 + 첫 나마비루<span class="chip">가볍게</span></div><div class="d">저녁이 메인이라 여기서 배를 채우지 않습니다</div></div></div>
-        <div class="row"><div class="t">13:00 – 13:30</div><div class="c"><div class="h" id="lodgeH">–</div><div class="d" id="lodgeD">–</div></div></div>
-        <div class="row"><div class="t">13:30 – 18:00</div><div class="c"><div class="h">신사이바시 · 아메리카무라 · 도톤보리</div><div class="d">이른 출발 덕에 오후가 넉넉해졌습니다. 첫날은 무리하지 않고 거리 구경 위주로</div></div></div>
-        <div class="row key"><div class="t">18:00 – 20:30</div><div class="c"><div class="h">저녁 — 스시 키요하라 + 나마비루</div><div class="d">★4.6 (331) · 난바 센니치마에의 가성비 로컬 스시 · 수요일 휴무인데 우리는 목요일이라 문제없음 · 자리에 앉으면 오토시(유료 기본 안주)가 나오는 집 · 예약 권장</div></div></div>
-        <div class="row"><div class="t">20:30 – 20:45</div><div class="c"><div class="h">난바 → 도부츠엔마에</div><div class="d">미도스지선 4분. 신세카이·토비타신치가 모두 이 역에서 도보권입니다</div></div></div>
-        <div class="row"><div class="t">20:45 – 21:30</div><div class="c"><div class="h">신세카이 야경 산책</div><div class="d">츠텐카쿠 조명을 보고 토비타신치 메인스트리트를 지나갑니다. </div></div></div>
+        <div class="row"><div class="t">10:40 – 11:35</div><div class="c"><div class="h">난카이선으로 <a href="https://www.google.com/maps/search/?api=1&amp;query=Nankai+Namba+Station" target="_blank" rel="noopener">난바역</a> 이동</div><div class="d">공항급행 ¥970 · 라피트 ¥1,490 (7분 차이)</div></div></div>
+        <div class="row"><div class="t">11:40 – 12:15</div><div class="c"><div class="h" id="lodgeH">–</div><div class="d" id="lodgeD">–</div></div></div>
+        <div class="row"><div class="t">12:25 – 12:45</div><div class="c"><div class="h">난바 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Yodoyabashi+Station" target="_blank" rel="noopener">요도야바시</a></div><div class="d">미도스지선 4정거장 · 약 8분. 13시 예약이라 여유 있게 움직입니다</div></div></div>
+        <div class="row key"><div class="t">13:00 – 14:30</div><div class="c"><div class="h">점심 — <a href="https://maps.app.goo.gl/9UBb9VU3gg96k2yj7" target="_blank" rel="noopener">오마카세 스시</a> (요도야바시)<span class="chip free">예약 완료</span></div><div class="d">요도야바시역 도보 5분 · 인당 14만원 — 첫 끼부터 이번 여행의 하이라이트입니다. 가게명은 확정되는 대로 기입</div></div></div>
+        <div class="row"><div class="t">14:30 – 15:10</div><div class="c"><div class="h">요도야바시 → 신사이바시 복귀</div><div class="d">미도스지선 2정거장. 배 꺼뜨릴 겸 기타하마·나카노시마 강변을 잠깐 걸어도 좋습니다</div></div></div>
+        
+        <div class="row"><div class="t">15:10 – 18:00</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Shinsaibashisuji+Shopping+Street" target="_blank" rel="noopener">신사이바시</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Amerikamura+Osaka" target="_blank" rel="noopener">아메리카무라</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Dotonbori" target="_blank" rel="noopener">도톤보리</a></div><div class="d">첫날은 무리하지 않고 거리 구경 위주로. 오마카세 여운은 커피로 달랩니다</div></div></div>
+        <div class="row key"><div class="t">18:00 – 20:30</div><div class="c"><div class="h">저녁 — 야키토리 + 나마비루</div><div class="d">점심이 오마카세 스시라 저녁은 숯불 꼬치로 결을 바꿉니다 · 1순위 <a href="https://www.google.com/maps/search/?api=1&amp;query=TORA+Tori-ya+Namba+Sennichimae&amp;query_place_id=ChIJ4xUpfcnnAGARvd-3XD30N4k" target="_blank" rel="noopener">토라토리야</a> ★4.8 — 숙소 도보 5분 · 자정까지 · 구글맵으로 단체 예약 가능</div></div></div>
+        <div class="row"><div class="t">20:30 – 20:45</div><div class="c"><div class="h">난바 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Dobutsuen-mae+Station" target="_blank" rel="noopener">도부츠엔마에</a></div><div class="d">미도스지선 4분. 신세카이·토비타신치가 모두 이 역에서 도보권입니다</div></div></div>
+        <div class="row"><div class="t">20:45 – 21:30</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Tsutenkaku&amp;query_place_id=ChIJ_0Lgd2DnAGARV0X03lbPy-U" target="_blank" rel="noopener">신세카이</a> 야경 · 토비타신치</div><div class="d">츠텐카쿠 조명을 보고 토비타신치 메인스트리트를 지나 난바로 복귀합니다</div></div></div>
         <div class="row"><div class="t">21:30 – 21:45</div><div class="c"><div class="h">난바 복귀</div></div></div>
-        <div class="row"><div class="t">21:45 –</div><div class="c"><div class="h">2차 — 우라난바 이자카야 골목</div><div class="d" id="night1D">–</div></div></div>
+        <div class="row"><div class="t">21:45 –</div><div class="c"><div class="h">2차 — <a href="https://www.google.com/maps/search/?api=1&amp;query=Ura+Namba+Osaka" target="_blank" rel="noopener">우라난바</a> 이자카야 골목</div><div class="d" id="night1D">–</div></div></div>
       </div>
     </div>
 
@@ -408,26 +400,26 @@ body{
 
       <div class="tl">
         <div class="row" id="wakeRow"><div class="t">07:00</div><div class="c"><div class="h">기상 · 조식</div><div class="d" id="wakeD">–</div></div></div>
-        <div class="row"><div class="t">08:00 – 08:40</div><div class="c"><div class="h">숙소 → 유니버설시티</div><div class="d" id="usjMoveD">–</div></div></div>
+        <div class="row"><div class="t">08:00 – 08:40</div><div class="c"><div class="h">숙소 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Universal+City+Station+Osaka" target="_blank" rel="noopener">유니버설시티</a></div><div class="d" id="usjMoveD">–</div></div></div>
         <div class="row key"><div class="t">08:40</div><div class="c"><div class="h">게이트 도착 — 개장 30분 전</div><div class="d">11/6 운영시간 공지를 확인하고 이 시각을 역산해야 합니다</div></div></div>
         <div class="row" id="entryRow"><div class="t">입장 직후</div><div class="c"><div class="h" id="entryH">–</div><div class="d" id="entryD">–</div></div></div>
-        <div class="row"><div class="t">09:00 – 18:00</div><div class="c"><div class="h">유니버설 스튜디오 재팬</div><div class="d" id="parkD">–</div></div></div>
+        <div class="row"><div class="t">09:00 – 18:00</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Universal+Studios+Japan" target="_blank" rel="noopener">유니버설 스튜디오 재팬</a></div><div class="d" id="parkD">–</div></div></div>
       </div>
 
       <div class="branch on" id="d2Onsen">
         <div class="tl" style="padding-top:0">
           <div class="row"><div class="t">18:00 – 18:25</div><div class="c"><div class="h">소라니와 온천으로 이동</div><div class="d">벤텐초 · 오사카베이타워. USJ에서 지하철로 20분 남짓</div></div></div>
-          <div class="row key"><div class="t">18:30 – 20:30</div><div class="c"><div class="h">소라니와 온천<span class="chip free">조이패스 무료</span></div><div class="d">유카타 대여 포함 · 23:00까지 영업 · 하루 종일 걸은 다리를 여기서 풉니다</div></div></div>
-          <div class="row"><div class="t">21:00 – 23:00</div><div class="c"><div class="h">난바 복귀 → 이자카야 + 나마비루</div><div class="d">온천 내 식당도 있지만 음식 평은 평범해서 난바에서 먹는 쪽을 권합니다</div></div></div>
+          <div class="row key"><div class="t">18:30 – 20:30</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Solaniwa+Onsen&amp;query_place_id=ChIJh2z_4A3nAGARROaafpvGXBQ" target="_blank" rel="noopener">소라니와 온천</a><span class="chip free">조이패스 무료</span></div><div class="d">유카타 대여 포함 · 23:00까지 영업 · 하루 종일 걸은 다리를 여기서 풉니다</div></div></div>
+          <div class="row"><div class="t">21:00 – 23:00</div><div class="c"><div class="h">난바 복귀 → 야키니쿠 + 나마비루</div><div class="d">온천 내 식당도 있지만 평은 평범해서, 난바로 돌아와 굽는 쪽을 권합니다</div></div></div>
           <div class="row warn"><div class="t">숙소 복귀 후</div><div class="c"><div class="h" id="bookA">–</div><div class="d" id="bookAD">–</div></div></div>
         </div>
       </div>
 
       <div class="branch" id="d2NoOnsen">
         <div class="tl" style="padding-top:0">
-          <div class="row"><div class="t">18:00 – 18:35</div><div class="c"><div class="h">USJ → 다이헤이노유 난바</div><div class="d">유니버설시티 → 니시쿠조 환승 → 사쿠라가와역, 약 30분 · 역에서 도보 5분. 조이패스가 없으니 소라니와 대신 숙소 쪽 온천으로 바로 갑니다</div></div></div>
-          <div class="row key"><div class="t">18:40 – 20:10</div><div class="c"><div class="h">다이헤이노유 난바 — 온천으로 피로 풀기</div><div class="d">난바 서쪽의 천연온천 · 입욕료 ¥850 안팎 · 새벽 1시까지 영업. USJ에서 하루 종일 걸은 다리를 저녁 전에 먼저 풉니다. 일본 대중탕이라 타투는 입장 불가</div></div></div>
-          <div class="row key"><div class="t">20:30 – 23:00</div><div class="c"><div class="h">저녁 — 숙소 근처 이자카야 + 나마비루</div><div class="d">몸을 풀고 나서 느긋하게. 숙소가 도보권이라 시간을 신경 쓸 필요가 없습니다</div></div></div>
+          <div class="row"><div class="t">18:00 – 18:45</div><div class="c"><div class="h">USJ → 다이헤이노유 (다이코쿠초)</div><div class="d">유니버설시티 → 니시쿠조 환승 → 난바 → 미도스지선 한 정거장 다이코쿠초역, 총 45분 안팎 · 역에서 도보 4분. 조이패스가 없으니 소라니와 대신 숙소 쪽 온천으로 갑니다</div></div></div>
+          <div class="row key"><div class="t">18:50 – 20:20</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Taihei+no+Yu+Namba&amp;query_place_id=ChIJf91t9mXnAGARNp-g9-ZxtcM" target="_blank" rel="noopener">다이헤이노유 난바</a> — 온천으로 피로 풀기</div><div class="d">★4.0 (3,032) · 천연온천 + 노천탕 + 사우나 · 입욕료 ¥850 안팎 · 새벽 1시까지 영업. USJ에서 하루 종일 걸은 다리를 저녁 전에 먼저 풉니다. 일본 대중탕이라 타투는 입장 불가</div></div></div>
+          <div class="row key"><div class="t">20:40 – 23:00</div><div class="c"><div class="h">저녁 — 숙소 근처 야키니쿠 + 나마비루</div><div class="d">다이코쿠초 → 난바 지하철 2분. 몸을 풀고 나서 느긋하게, 숙소가 도보권이라 시간을 신경 쓸 필요가 없습니다</div></div></div>
           <div class="row"><div class="t">23:00 –</div><div class="c"><div class="h">도톤보리 심야 산책 · 2차 (자유)</div></div></div>
           <div class="row warn"><div class="t">숙소 복귀 후</div><div class="c"><div class="h" id="bookB">–</div><div class="d" id="bookBD">–</div></div></div>
         </div>
@@ -445,16 +437,16 @@ body{
       <div class="tl">
         <div class="row"><div class="t">08:00</div><div class="c"><div class="h">기상 · 짐 정리</div></div></div>
         <div class="row warn"><div class="t" id="bagT">08:30</div><div class="c"><div class="h" id="bagH">–</div><div class="d" id="bagD">–</div></div></div>
-        <div class="row"><div class="t">09:30 – 10:45</div><div class="c"><div class="h">구로몬 시장 — 아침 겸 해산물 + 맥주</div><div class="d">09:00~18:00 영업 · 인기 품목은 오전에 소진됩니다</div></div></div>
-        <div class="row key"><div class="t">11:00 – 13:00</div><div class="c"><div class="h">덴덴타운 굿즈샵 투어</div><div class="d">가게 대부분 10~12시 오픈 · 관심 없는 인원은 오락실·돈키호테에서 자유시간</div></div></div>
+        <div class="row"><div class="t">09:30 – 10:45</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kuromon+Market&amp;query_place_id=ChIJXSJB5UHnAGARQcEjvngsHaw" target="_blank" rel="noopener">구로몬 시장</a> — 아침 겸 해산물 + 맥주</div><div class="d">09:00~18:00 영업 · 인기 품목은 오전에 소진됩니다</div></div></div>
+        <div class="row key"><div class="t">11:00 – 13:00</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Nipponbashi+Denden+Town&amp;query_place_id=ChIJv6w_-2fnAGARH2p9wbwos3c" target="_blank" rel="noopener">덴덴타운</a> 굿즈샵 투어</div><div class="d">가게 대부분 10~12시 오픈 · 관심 없는 인원은 오락실·돈키호테에서 자유시간</div></div></div>
         <div class="row"><div class="t">13:00 – 13:20</div><div class="c"><div class="h">신세카이 이동</div><div class="d">도보 15분 또는 사카이스지선 두 정거장</div></div></div>
-        <div class="row" id="kushiRow"><div class="t">13:20 – 14:20</div><div class="c"><div class="h">점심 — 잔잔요코초 쿠시카츠 + 낮술</div><div class="d" id="kushiD">–</div></div></div>
+        <div class="row" id="kushiRow"><div class="t">13:20 – 14:20</div><div class="c"><div class="h">점심 — <a href="https://www.google.com/maps/search/?api=1&amp;query=Janjan+Yokocho&amp;query_place_id=ChIJgQ2AtIrdAGARZI0e20U8h0Y" target="_blank" rel="noopener">잔잔요코초</a> 쿠시카츠 + 낮술</div><div class="d" id="kushiD">–</div></div></div>
       </div>
 
       <div class="branch on" id="d3A">
         <div class="tl" style="padding-top:0">
-          <div class="row key"><div class="t">14:20 – 17:20</div><div class="c"><div class="h">오후 자유시간 — 3시간<span class="chip">이동 포함</span></div><div class="d">돈키호테 쇼핑 / 우라난바 2차 / 스파월드 / 아메리카무라 — 아직 미정. 뭘 하느냐에 따라 이동 시간이 달라지므로 통으로 잡아둡니다</div></div></div>
-          <div class="row"><div class="t">17:20 – 18:20</div><div class="c"><div class="h">난바역 → 간사이공항</div></div></div>
+          <div class="row key"><div class="t">14:20 – 17:20</div><div class="c"><div class="h">오후 자유시간 — 3시간<span class="chip">이동 포함</span></div><div class="d"><a href="https://www.google.com/maps/search/?api=1&amp;query=Don+Quijote+Dotonbori" target="_blank" rel="noopener">돈키호테</a> 쇼핑 / 우라난바 2차 / <a href="https://www.google.com/maps/search/?api=1&amp;query=Spa+World+Osaka" target="_blank" rel="noopener">스파월드</a> / 아메리카무라 — 아직 미정. 뭘 하느냐에 따라 이동 시간이 달라지므로 통으로 잡아둡니다</div></div></div>
+          <div class="row"><div class="t">17:20 – 18:20</div><div class="c"><div class="h">난바역 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Kansai+International+Airport+Terminal+1" target="_blank" rel="noopener">간사이공항</a></div></div></div>
           <div class="row"><div class="t">18:20 – 20:20</div><div class="c"><div class="h">짐 수령 · 출국 수속 · 면세점 마지막 나마비루</div><div class="d">짐이 오후 4시에 도착해 있으므로 여유롭습니다</div></div></div>
           <div class="row key"><div class="t">20:20 – 22:25</div><div class="c"><div class="h">간사이 → 인천 · KE5724</div></div></div>
         </div>
@@ -466,7 +458,7 @@ body{
         </div>
         <div class="tl" style="padding-top:0">
           <div class="row"><div class="t">14:20 – 14:40</div><div class="c"><div class="h">신세카이 → 난바역 (짐 찾기)</div></div></div>
-          <div class="row"><div class="t">14:40 – 15:35</div><div class="c"><div class="h">간사이공항 이동</div></div></div>
+          <div class="row"><div class="t">14:40 – 15:35</div><div class="c"><div class="h"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kansai+International+Airport+Terminal+1" target="_blank" rel="noopener">간사이공항</a> 이동</div></div></div>
           <div class="row"><div class="t">15:35 – 17:35</div><div class="c"><div class="h">출국 수속 · 면세점</div><div class="d">캐리어를 직접 끌고 왔으므로 체크인부터 합니다</div></div></div>
           <div class="row key"><div class="t">17:35 – 19:35</div><div class="c"><div class="h">간사이 → 인천</div></div></div>
         </div>
@@ -482,22 +474,22 @@ body{
       <div class="dayhead"><span class="dayno">1</span><span class="daydate">11.05 THU</span><span class="daytitle">난바 도착 첫날</span></div>
       <div class="meals">
         <div class="meal">
-          <span class="st tbd">검토</span>
-          <div class="mc">
-            <div class="ms">점심 · 11:40</div>
-            <div class="mn"><a href="https://www.google.com/maps/search/?api=1&amp;query=UROKO+RAMEN&amp;query_place_id=ChIJF0KnbgvnAGAR_3QEsP3S98E" target="_blank" rel="noopener">우로코 라멘</a> ★4.2 (828)</div>
-            <div class="md">난카이 난바역 남쪽 도보 3분 — 공항에서 도착하는 동선 그대로입니다. 쇼유·시오가 강점, 교자·볶음밥 세트 · 대안: <a href="https://www.google.com/maps/search/?api=1&amp;query=ICHIRAN+Dotonbori+South&amp;query_place_id=ChIJK7TL6RTnAGARYiifaSOuOFM" target="_blank" rel="noopener">이치란 도톤보리 남관</a> ★4.3 — 유명한 만큼 웨이팅이 깁니다</div>
-          </div>
-          <div class="mp">¥2,000<small>19,400원 · 맥주 포함</small></div>
-        </div>
-        <div class="meal">
           <span class="st ok">확정</span>
           <div class="mc">
-            <div class="ms">저녁 · 18:00</div>
-            <div class="mn"><a href="https://www.google.com/maps/search/?api=1&amp;query=Sushi+Kiyohara&amp;query_place_id=ChIJFwNu0GvnAGARDnSkxUVr3Fc" target="_blank" rel="noopener">스시 키요하라</a> ★4.6 (331)</div>
-            <div class="md">난바 센니치마에 2층의 가성비 로컬 스시 — 단품 주문제, 엔가와·우니 평이 좋습니다. 오토시(유료 기본 안주) 있음 · 수요일 휴무(우리는 목요일) · 예약 권장</div>
+            <div class="ms">점심 · 13:00</div>
+            <div class="mn"><a href="https://maps.app.goo.gl/9UBb9VU3gg96k2yj7" target="_blank" rel="noopener">요도야바시 오마카세 스시</a> — 예약 완료</div>
+            <div class="md">요도야바시역 도보 5분 · 난바에서 미도스지선 4정거장. 가게명은 확정되는 대로 기입합니다</div>
           </div>
-          <div class="mp">¥6,000<small>58,200원</small></div>
+          <div class="mp">140,000원<small>인당 · 예약 완료</small></div>
+        </div>
+        <div class="meal">
+          <span class="st tbd">검토</span>
+          <div class="mc">
+            <div class="ms">저녁 · 18:00</div>
+            <div class="mn"><a href="https://www.google.com/maps/search/?api=1&amp;query=TORA+Tori-ya+Namba+Sennichimae&amp;query_place_id=ChIJ4xUpfcnnAGARvd-3XD30N4k" target="_blank" rel="noopener">토라토리야 난바 센니치마에</a> ★4.8 (4,120)</div>
+            <div class="md">숯불 야키토리 + 한입 교자 — 로컬 인기 노포, 숙소 도보 5분, 자정까지 · 구글맵에서 단체 예약을 받는다는 후기가 있어 4인 예약이 수월합니다. 점심 오마카세와 겹치지 않는 결. 대안: <a href="https://www.google.com/maps/search/?api=1&amp;query=Sumibi+Yakitori+Ainosuke&amp;query_place_id=ChIJ_1Zv7hTnAGARjSd0G68r0V4" target="_blank" rel="noopener">아이노스케</a> ★4.6 (299) — 도톤보리 지하의 아늑한 숯불 야키토리 · <a href="https://www.google.com/maps/search/?api=1&amp;query=Sumibi-yakitori+Enya+Namba&amp;query_place_id=ChIJ9TASJxPnAGARzKzHCwDbhTc" target="_blank" rel="noopener">엔야 난바</a> ★4.4 (992) — 츠쿠네 명물, 예약 강권</div>
+          </div>
+          <div class="mp">¥5,000<small>48,500원</small></div>
         </div>
         <div class="meal">
           <span class="st any">간식</span>
@@ -535,11 +527,11 @@ body{
         <div class="meal">
           <span class="st tbd">검토</span>
           <div class="mc">
-            <div class="ms">저녁 · 20:30 (온천 후)</div>
-            <div class="mn"><a href="https://www.google.com/maps/search/?api=1&amp;query=Yusei+ura-Namba&amp;query_place_id=ChIJG8GPFGrnAGARL-25AQZO3wM" target="_blank" rel="noopener">유세이 우라난바</a> ★4.1 (371)</div>
-            <div class="md">사케 구색이 좋고 사시미 평이 훌륭한 이자카야 — 새벽 3시까지라 온천 뒤 늦은 시작에도 여유. 대안: 우오덴 ★4.1 · 진베(오뎅) ★4.2 등 우라난바 골목</div>
+            <div class="ms">저녁 · 20:40 (온천 후)</div>
+            <div class="mn"><a href="https://www.google.com/maps/search/?api=1&amp;query=Yakiniku+Matsumoto+Namba&amp;query_place_id=ChIJozxfFDTnAGAR290XPLgC4gM" target="_blank" rel="noopener">야키니쿠 마츠모토</a> ★4.9 (980)</div>
+            <div class="md">숙소 도보 1분(난바 1초메) · 와규 모둠 + 생맥, 자정까지 — 온천 뒤 20:40 시작에 동선·시간 모두 최적. 대안: <a href="https://www.google.com/maps/search/?api=1&amp;query=Yakiniku+Rikimaru+Namba+Minatomachi&amp;query_place_id=ChIJAQA0fxLnAGARJ27O8cfSrBg" target="_blank" rel="noopener">리키마루 미나토마치</a> ★4.8 (5,491) — 와규 무한리필 코스, 새벽 1시까지 · <a href="https://www.google.com/maps/search/?api=1&amp;query=Yakiniku+Kurono+Ura-Namba&amp;query_place_id=ChIJFxBBLwDnAGARzo2vZEtPt1s" target="_blank" rel="noopener">쿠로노 우라난바</a> ★4.8 (2,707) — 와규 한 마리 통구매, 23시 마감이라 라스트오더 주의</div>
           </div>
-          <div class="mp">¥5,000<small>48,500원</small></div>
+          <div class="mp">¥6,000<small>58,200원</small></div>
         </div>
         <div class="meal">
           <span class="st any">간식</span>
@@ -614,13 +606,13 @@ body{
       <div class="card">
         <div class="ch"><span class="cn">1일차 현지</span><span class="cd">11.05 THU</span></div>
         <ul>
-          <li><span class="lb">점심 라멘 + 생맥<small>¥2,000</small></span><span class="vl">19,400</span></li>
-          <li><span class="lb">저녁 스시 키요하라 + 나마비루<small>¥6,000</small></span><span class="vl">58,200</span></li>
+          <li><span class="lb">점심 오마카세 스시<small>요도야바시 · 예약 완료</small></span><span class="vl">140,000</span></li>
+          <li><span class="lb">저녁 야키토리 + 나마비루<small>¥5,000</small></span><span class="vl">48,500</span></li>
           <li><span class="lb">2차 우라난바<small>¥3,000</small></span><span class="vl">29,100</span></li>
-          <li><span class="lb">교통<small>공항 → 난바 + 시내 + 도부츠엔마에 왕복 ¥1,900</small></span><span class="vl">18,400</span></li>
+          <li><span class="lb">교통<small>공항→난바 + 요도야바시·도부츠엔마에 왕복 ¥2,400</small></span><span class="vl">23,300</span></li>
           <li><span class="lb">간식<small>도톤보리 주전부리 ¥1,000</small></span><span class="vl">9,700</span></li>
         </ul>
-        <div class="sum"><span class="sl">DAY 1</span><span class="sv">134,800</span></div>
+        <div class="sum"><span class="sl">DAY 1</span><span class="sv">250,600</span></div>
       </div>
 
       <div class="card">
@@ -662,8 +654,8 @@ body{
         <div class="ad">대한항공 KE5721 / KE5724 · 531,100원/인으로 확정. 위 파라타 옵션은 비교 참고용으로 남겨둡니다</div>
       </div>
       <div class="act hot">
-        <div class="an">숙소 확정 · 예약</div>
-        <div class="ad">에어비앤비면 호스트에게 <b>위치·침실과 욕실 구성·경보기 유무</b>부터 확인, 호텔이면 <b>커넥팅룸 지정 요청</b>과 함께 예약</div>
+        <div class="an">숙소 예약 — 에어비앤비 확정</div>
+        <div class="ad">난바 1초메 토라야빌딩 리스팅으로 <b>숙소는 확정</b> (침실 3 · 욕실 2.5). 예약을 진행하고 <b>경보기 유무</b>만 리스팅에서 확인하세요</div>
       </div>
       <div class="act hot">
         <div class="an">USJ 라이드 선정</div>
@@ -679,7 +671,7 @@ body{
       </div>
       <div class="act">
         <div class="an">식당 선정 및 예약</div>
-        <div class="ad">키요하라는 확정 · 위 <b>식당 리스트의 '검토' 끼니</b>(1일차 점심, 2일차 저녁, 3일차 점심)를 확정하고 예약이 필요한 곳부터 잡습니다</div>
+        <div class="ad">오마카세(1일차 점심)는 확정 · <b>'검토' 끼니</b> — 1일차 저녁 야키토리, 2일차 야키니쿠, 3일차 쿠시카츠 — 를 확정하고 예약이 필요한 곳부터 잡습니다</div>
       </div>
       <div class="act">
         <div class="an">짐 배송 (에어포터 / n·e·s·t)</div>
@@ -696,7 +688,7 @@ body{
     </div>
 
     <p class="fine">
-      환율 ¥1 = 9.7원 기준 · 숙소는 4인 분할 금액입니다 (호텔 463,765원 / 에어비앤비 376,900원) · 짐 배송 또는 코인락커는 2일차 밤 현지 결제로 잡았습니다 · 개인 쇼핑(덴덴타운 굿즈, 돈키호테, 면세점)과 여행자보험·eSIM은 각자 부담으로 총예산에서 제외했습니다 · 식비와 간식은 '식당 리스트'의 1인 예산과 같은 숫자입니다 · 오사카 주유패스는 이번 동선에서 쓸 시설이 없어 구매 대상이 아닙니다.
+      환율 ¥1 = 9.7원 기준 · 숙소는 4인 분할 금액입니다 (호텔 463,765원 / 에어비앤비 444,055원) · 짐 배송 또는 코인락커는 2일차 밤 현지 결제로 잡았습니다 · 개인 쇼핑(덴덴타운 굿즈, 돈키호테, 면세점)과 여행자보험·eSIM은 각자 부담으로 총예산에서 제외했습니다 · 식비와 간식은 '식당 리스트'의 1인 예산과 같은 숫자입니다 · 오사카 주유패스는 이번 동선에서 쓸 시설이 없어 구매 대상이 아닙니다.
     </p>
   </section>
 </div>
@@ -742,7 +734,7 @@ var U = {
 var L = {
   H: { price:115941, name:"카락사 호텔",
     preLodge:"카락사 호텔 커넥팅룸 ×2 · 총 463,765원",
-    lodgeH:"호텔 프런트에 짐 맡기기",
+    lodgeH:"<a href='https://www.google.com/maps/search/?api=1&query=Karaksa+Hotel+Osaka+Namba&query_place_id=ChIJOWAcmxHnAGARg8mIA_Y3Zl8' target='_blank' rel='noopener'>카락사 호텔</a> 프런트에 짐 맡기기",
     lodgeD:"체크인 전에도 프런트에서 보관해 줍니다. 로비에 무료 음료·스낵이 상시 준비되어 있습니다.",
     night1D:"우오덴 4.1 · 유세이 4.1(사케) · 진베 4.2(오뎅). 숙소가 도보권이라 시간 신경 쓰지 않아도 됩니다.",
     wakeD:"욕실이 2개라 4명이 씻고 나가는 데 무리 없습니다",
@@ -751,14 +743,14 @@ var L = {
     bagD:"프런트에 맡기면 오후 4시까지 간사이공항 제1터미널로 배송됩니다. 8시 30분을 넘기면 이 서비스를 쓸 수 없습니다.",
     bookH:"에어포터 신청 · 결제",
     bookD:"다음 날 아침 발송분을 전날 밤에 예약해 둡니다. 캐리어 개수만큼 신청하세요." },
-  A: { price:94225, name:"에어비앤비",
-    preLodge:"에어비앤비 집 전체 · 난바 · 총 376,900원",
-    lodgeH:"에어비앤비에 짐 두기",
-    lodgeD:"지도 기준 도톤보리에서 도보 3분. 셀프 체크인이라 체크인 시간 전 짐 보관이 가능한지 호스트에게 미리 확인하세요.",
+  A: { price:111014, name:"에어비앤비",
+    preLodge:"에어비앤비 집 전체 · 난바 1초메 · 총 444,055원",
+    lodgeH:"<a href='https://maps.app.goo.gl/Yhit1kfAfWjcik4x9' target='_blank' rel='noopener'>에어비앤비</a>에 짐 두기",
+    lodgeD:"에비스바시 다리 남쪽 토라야빌딩, 도톤보리 도보 1~2분. 셀프 체크인이라 체크인 시간 전 짐 보관이 가능한지 호스트에게 미리 확인하세요.",
     night1D:"우오덴 4.1 · 유세이 4.1(사케) · 진베 4.2(오뎅). 우라난바가 숙소 바로 옆이라 시간 신경 쓸 필요가 없습니다.",
-    wakeD:"욕실이 1개뿐이라 씻는 순서를 전날 밤에 정해두세요. 이 일정에서 가장 빠듯한 지점입니다",
+    wakeD:"욕실이 2.5개(샤워 3곳)라 4명이 씻고 나가는 데 무리 없습니다",
     usjMoveD:"난바 → 유니버설시티 약 35~40분",
-    bagT:"08:30", bagH:"체크아웃 + 난바역 n·e·s·t 카운터에 짐 발송",
+    bagT:"08:30", bagH:"체크아웃 + <a href='https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station' target='_blank' rel='noopener'>난바역 n·e·s·t 카운터</a>에 짐 발송",
     bagD:"프런트가 없어 호텔 발송은 안 되지만, 난카이 난바역 2층 카운터가 도보 5분 거리입니다(12:00 마감). 맡긴 뒤 구로몬까지 걸어가면 되니 동선 손실은 거의 없습니다.",
     bookH:"n·e·s·t 카운터 위치 확인",
     bookD:"난카이 난바역 2층 중앙 개찰구 앞. 숙소에서 도보 5분이니 아침에 캐리어를 끌고 걸어가면 됩니다." }
@@ -769,7 +761,7 @@ var D2_ONSEN = [
   ["USJ 점심 — 파크 내 식당","¥2,500","24,200",""],
   ["간식 — 파크 푸드·버터비어","¥1,500","14,600",""],
   ["소라니와 온천","간사이 조이패스로 무료","0","zero"],
-  ["저녁 이자카야","¥5,000","48,500",""],
+  ["저녁 야키니쿠","¥6,000","58,200",""],
   ["교통","USJ · 벤텐초 · 난바 ¥1,200","11,600",""]
 ];
 var D2_NO = [
@@ -777,12 +769,12 @@ var D2_NO = [
   ["USJ 점심 — 파크 내 식당","¥2,500","24,200",""],
   ["간식 — 파크 푸드·버터비어","¥1,500","14,600",""],
   ["다이헤이노유 난바 온천","입욕료 ¥850 안팎","8,200",""],
-  ["저녁 이자카야 — 숙소 근처","¥5,000","48,500",""],
-  ["교통","USJ · 사쿠라가와 · 난바 ¥800","7,800",""]
+  ["저녁 야키니쿠 — 숙소 근처","¥6,000","58,200",""],
+  ["교통","USJ · 다이코쿠초 · 난바 ¥800","7,800",""]
 ];
 
 var D1 = 134800, D3_FIX = 29100 + 33950 + 9400 + 7800;
-var curF = 'A', curU = '1', curL = 'H';
+var curF = 'A', curU = '1', curL = 'A';
 
 function won(n){ return n.toLocaleString('ko-KR'); }
 function set(id, v){ document.getElementById(id).textContent = v; }
@@ -810,14 +802,14 @@ function render(){
   document.getElementById('d2Onsen').className = 'branch' + (u.onsen ? ' on' : '');
   document.getElementById('d2NoOnsen').className = 'branch' + (u.onsen ? '' : ' on');
 
-  set('lodgeH', l.lodgeH); set('lodgeD', l.lodgeD);
+  html('lodgeH', l.lodgeH); set('lodgeD', l.lodgeD);
   set('night1D', l.night1D);
   set('wakeD', l.wakeD); set('usjMoveD', l.usjMoveD);
 
   var bagT, bagH, bagD, bookH, bookD, bagLb, bagSm;
   if (curF === 'B') {
     bagT = '08:30';
-    bagH = '체크아웃 + 난바역 코인락커 보관';
+    bagH = '체크아웃 + <a href="https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station" target="_blank" rel="noopener">난바역 코인락커</a> 보관';
     bagD = '짐 배송은 공항 수령이 오후 4시부터라 17:35 출발편에 못 맞춥니다. 공항 가는 길에 다시 찾을 수 있게 난바역 락커를 쓰세요.';
     bookH = '코인락커 위치 확인';
     bookD = '난바역 락커는 오전에 빠르게 찹니다. 위치와 여유 칸을 전날 봐 두세요.';
@@ -827,7 +819,7 @@ function render(){
     bookH = l.bookH; bookD = l.bookD;
     bagLb = '짐 배송'; bagSm = curL === 'H' ? '에어포터 · 호텔 프런트 발송' : '에어포터 · 난바역 n·e·s·t 카운터';
   }
-  set('bagT', bagT); set('bagH', bagH); set('bagD', bagD);
+  set('bagT', bagT); html('bagH', bagH); set('bagD', bagD);
   set('bookA', bookH); set('bookAD', bookD);
   set('bookB', bookH); set('bookBD', bookD);
 
@@ -838,7 +830,7 @@ function render(){
   html('usjBanner', u.banner);
   set('entryH', u.entryH); set('entryD', u.entryD); set('parkD', u.parkD);
   document.getElementById('entryRow').className = 'row' + (curU === '3' ? '' : ' warn');
-  document.getElementById('wakeRow').className = 'row' + (curL === 'A' ? ' warn' : '');
+  document.getElementById('wakeRow').className = 'row';
 
   var rp = document.getElementById('ridePanel');
   if (u.rides) {
@@ -870,7 +862,7 @@ function render(){
            '<span class="vl ' + r[3] + '">' + r[2] + '</span></li>';
   }).join(''));
 
-  var d2 = (u.onsen ? 105700 : 110100) + f.bag;
+  var d2 = (u.onsen ? 115400 : 119800) + f.bag;
   var d3 = D3_FIX + f.pm + f.ap;
   var pre = f.fare + l.price + u.price;
   var total = pre + D1 + d2 + d3;
